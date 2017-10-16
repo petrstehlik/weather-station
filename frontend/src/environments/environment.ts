@@ -4,5 +4,13 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // Defaults for chart configuration
+    chart : {
+        height : 250,           // Default height of the chart's container (px)
+        labels : {
+            offsetX : 10,       // X-axis offset for label position (px)
+            offsetY : 20        // Y-axis offset for label position (px)
+        }
+    },
 };
