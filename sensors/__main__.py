@@ -27,6 +27,11 @@ i = 0
 time_i = 0
 
 while True:
+	"""
+	Every 10 seconds read data from DHT11 and every 300 (10 * 30) seconds read data
+	from BMP180. This ensures that data from DHT11 will make sense. After reading
+	data from BMP180 publish everything via MQTT.
+	"""
 	result = dht.read()
 	if result.is_valid():
 		humidity += result.humidity

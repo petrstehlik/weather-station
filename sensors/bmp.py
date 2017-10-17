@@ -11,7 +11,6 @@ def read_bmp():
 	Read data from BMP180 sensor. Available data:
 		* temperature
 		* pressure (sea level and normal)
-
 	"""
 	log.debug("Reading BMP180 sensor")
 	return({

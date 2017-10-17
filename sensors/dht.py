@@ -11,6 +11,9 @@ log = logging.getLogger(__name__)
 dht = dht11.DHT11(pin=4)
 
 def read():
+	"""
+	For reading DHT11 sensor which is very unreliable
+	"""
 	log.debug("Reading DHT11 sensor")
 	return dht.read()
 
