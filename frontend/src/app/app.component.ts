@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
 
 declare const Dygraph;
-declare const socketio;
+declare const io;
 
 const temp = [
     [new Date(1504869255000), 23.1,],
@@ -34,13 +33,34 @@ const temp = [
       Weather Station
     </h1>
 
-    <ex-graph
-        [labels]="['Temperature', 'Value']"
-        [data]="tempData"
-        [loading]="tempReady"
-        range="null"
-        topTitle="Temperature"
-    ></ex-graph>
+    <div class="grid">
+        <ex-graph
+            class="col"
+            height="100"
+            [labels]="['Temperature', 'Value']"
+            [data]="tempData"
+            [loading]="tempReady"
+            range="null"
+            topTitle="Temperature"
+        ></ex-graph>
+        <div class="col">
+            {{ tempData['data'][tempData['data'].length -1] }}
+        </div>
+    </div>
+
+    <div class="grid">
+        <ex-graph
+            class="col"
+            height="100"
+            [labels]="['Temperature', 'Value']"
+            [data]="tempData"
+            [loading]="tempReady"
+            range="null"
+            topTitle="Temperature"
+        ></ex-graph>
+        <div class="col"></div>
+
+    </div>
 
   `,
   styles: []
@@ -49,15 +69,22 @@ export class AppComponent implements OnInit {
     tempData : Object = {'data' : [], 'labels' : []};
     tempReady = true;
 
-    g = null;
+    ws;
 
     ngOnInit() {
         this.setData();
+        this.ws = io('/ws', { reconnection: true });
+
+        this.ws.on('connect', this.connect);
     }
 
     public setData() {
         this.tempData['data'] = temp;
         this.tempData['labels'] = ['Temperature', 'Value']
         this.tempReady = false;
+    }
+
+    private connect() {
+        console.debug("Successfully connected to WS")
     }
 }
