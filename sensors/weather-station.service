@@ -1,0 +1,14 @@
+[Unit]
+Description=Weather Station sensor reader and MQTT publisher
+
+[Service]
+ExecStart=/home/petrstehlik/weather-station/sensors/__main__.py
+Restart=always
+User=root
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=Weather-Station
+
+[Install]
+WantedBy=multi-user.target
+
