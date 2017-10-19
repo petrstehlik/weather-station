@@ -88,6 +88,7 @@ export class AppComponent implements OnInit {
         });
 
         this.ws.on('data', (data) => {
+            console.log(data);
             this.data['temperature'].push_back([new Date(data['temperature'][0]), data['temperature'][1]]);
             this.data['humidity'].push_back([new Date(data['humidity'][0]), data['humidity'][1]]);
             this.data['pressure'].push_back([new Date(data['pressure'][0]), data['pressure'][1]]);
@@ -107,7 +108,6 @@ export class AppComponent implements OnInit {
             item[0] = new Date(item[0])
         }
 
-        console.log(this.data)
         this.data["temperature"] = {
             "labels" : ['Temperature', 'Value'],
             "data" : this.data["temperature"]
