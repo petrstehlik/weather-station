@@ -1,0 +1,9 @@
+aiohttp==2.2.5
+async-timeout==2.0.0
+chardet==3.0.4
+multidict==3.3.0
+python-engineio==1.7.0
+python-socketio==1.8.1
+six==1.11.0
+yarl==0.13.0
+paho-mqtt==1.3.1
