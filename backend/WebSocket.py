@@ -10,7 +10,7 @@ app = web.Application()
 sio.attach(app)
 
 import logging
-logging.basicConfig(level=logging.WARN)
+logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
 
 conn = sqlite3.connect('test.sq3', check_same_thread=False)
@@ -37,19 +37,20 @@ def getAll():
 
 @sio.on('connect', namespace='/ws')
 async def connect(sid, environ):
+    #publish_data(1000, {"temperature" : 0, "humidity" : 0, "pressure" : 0})
     await sio.emit('init', json.dumps(getAll()), namespace="/ws")
 
 @sio.on('disconnect', namespace='/ws')
 def disconnect(sid):
     print('disconnect ', sid)
 
-async def publish_data(ts, data):
-    await sio.emit('data', json.dumps({
-            "temperature" : [ts * 1000, data['temperature']],
-            "humidity" : [ts * 1000, data['humidity']],
-            "pressure" : [ts * 1000, data['pressure']],
-        }), namespace="/ws")
+def publish_data(ts, data):
+    log.info("Publishing new data")
+    sio.send(json.dumps({
+        "temperature" : [ts * 1000, data['temperature']],
+        "humidity" : [ts * 1000, data['humidity']],
+        "pressure" : [ts * 1000, data['pressure']],
+    }), namespace="/ws")
 
->>>>>>> backend
 if __name__ == '__main__':
     web.run_app(app, host='127.0.0.1', port=8080)
