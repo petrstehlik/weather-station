@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import sys
 import RPi.GPIO as GPIO
 import time
 import paho.mqtt.publish as publish
@@ -34,6 +34,12 @@ while True:
 	from BMP180. This ensures that data from DHT11 will make sense. After reading
 	data from BMP180 publish everything via MQTT.
 	"""
+	args = sys.argv
+	delay = 10.0
+
+	if len(args) > 1:
+		delay = float(args[1])
+
 	result = dht.read()
 	if result.is_valid():
 		humidity += result.humidity
@@ -53,4 +59,4 @@ while True:
 		publish.single(MQTT_PRES,"{0};{1}".format(ts, data["pressure"]), hostname=HOST)
 
 	time_i += 1
-	time.sleep(10)
+	time.sleep(delay)
