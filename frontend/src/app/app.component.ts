@@ -3,29 +3,6 @@ import { Component, OnInit } from '@angular/core';
 declare const Dygraph;
 declare const io;
 
-const temp = [
-    [new Date(1504869255000), 23.1,],
-    [new Date(1504868952000), 23.1,],
-    [new Date(1504868649000), 23.1,],
-    [new Date(1504868347000), 23.1,],
-    [new Date(1504868044000), 23.2,],
-    [new Date(1504867741000), 23.2,],
-    [new Date(1504867438000), 23.2,],
-    [new Date(1504867136000), 23.2,],
-    [new Date(1504866833000), 23.2,],
-    [new Date(1504866530000), 23.2,],
-    [new Date(1504866228000), 23.2,],
-    [new Date(1504865925000), 23.3,],
-    [new Date(1504865622000), 23.3,],
-    [new Date(1504865319000), 23.3,],
-    [new Date(1504865017000), 23.3,],
-    [new Date(1504864714000), 23.3,],
-    [new Date(1504864411000), 23.4,],
-    [new Date(1504864108000), 23.4,],
-    [new Date(1504863806000), 23.4,],
-    [new Date(1504863503000), 23.4,]
-];
-
 @Component({
   selector: 'app-root',
   template: `
@@ -46,11 +23,46 @@ const temp = [
             ></ex-graph>
         </div>
         <div class="col big-num" *ngIf="!tempLoad">
-            {{ data?.temperature?.data[data?.temperature?.data.length-1][1] }}
+            {{ data?.temperature?.data[data?.temperature?.data.length-1][1] }} °C
         </div>
 
     </div>
 
+    <div class="grid">
+        <div class="col">
+            <ex-graph
+                height="100"
+                [labels]="['Pressure', 'Value']"
+                [data]="data?.pressure"
+                [loading]="tempLoad"
+                range="null"
+                topTitle="Pressure"
+                labelY="null"
+            ></ex-graph>
+        </div>
+        <div class="col big-num" *ngIf="!tempLoad">
+            {{ data?.pressure?.data[data?.pressure?.data.length-1][1] / 100 }} hPa
+        </div>
+
+    </div>
+
+    <div class="grid">
+        <div class="col">
+            <ex-graph
+                height="100"
+                [labels]="['Humidity', 'Value']"
+                [data]="data?.humidity"
+                [loading]="tempLoad"
+                range="null"
+                topTitle="Humidity"
+                labelY="null"
+            ></ex-graph>
+        </div>
+        <div class="col big-num" *ngIf="!tempLoad">
+            {{ data?.humidity?.data[data?.humidity?.data.length-1][1] }} %
+        </div>
+
+    </div>
   `,
   styles: []
 })
@@ -64,7 +76,6 @@ export class AppComponent implements OnInit {
     };
 
     ngOnInit() {
-        this.setData();
         this.ws = io('/ws', { reconnection: true });
 
         this.ws.on('connect', () => {
@@ -75,21 +86,41 @@ export class AppComponent implements OnInit {
             this.data = JSON.parse(data);
             this.parseData();
         });
-    }
 
-    public setData() {
-        this.tempData['data'] = temp;
-        this.tempData['labels'] = ['Temperature', 'Value']
+        this.ws.on('data', (data) => {
+            this.data['temperature'].push_back([new Date(data['temperature'][0]), data['temperature'][1]]);
+            this.data['humidity'].push_back([new Date(data['humidity'][0]), data['humidity'][1]]);
+            this.data['pressure'].push_back([new Date(data['pressure'][0]), data['pressure'][1]]);
+        });
     }
 
     private parseData() {
         for (let item of this.data['temperature'] ) {
             item[0] = new Date(item[0])
         }
+
+        for (let item of this.data['humidity'] ) {
+            item[0] = new Date(item[0])
+        }
+
+        for (let item of this.data['pressure'] ) {
+            item[0] = new Date(item[0])
+        }
+
         console.log(this.data)
         this.data["temperature"] = {
             "labels" : ['Temperature', 'Value'],
             "data" : this.data["temperature"]
+        }
+
+        this.data["pressure"] = {
+            "labels" : ['Temperature', 'Value'],
+            "data" : this.data["pressure"]
+        }
+
+        this.data["humidity"] = {
+            "labels" : ['Temperature', 'Value'],
+            "data" : this.data["humidity"]
         }
         this.tempLoad = false;
     }
