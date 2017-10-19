@@ -1,12 +1,14 @@
 import logging
 import sqlite3
+from aiohttp import web
 
 from Holder import Holder
+from WebSocket import getAll, app, publish_data
 
-MQTT_TEMP = "fake/home/ws/sensor/temperature"
-MQTT_HUM = "fake/home/ws/sensor/humidity"
-MQTT_PRES = "fake/home/ws/sensor/pressure"
-HOST = "localhost"
+MQTT_TEMP = "home/ws/sensor/temperature"
+MQTT_HUM = "home/ws/sensor/humidity"
+MQTT_PRES = "home/ws/sensor/pressure"
+HOST = "10.0.0.32"
 PORT = 1883
 
 conn = sqlite3.connect('test.sq3', check_same_thread=False)
@@ -27,6 +29,8 @@ def store_record(timestamp, data):
     conn.commit()
     c.close()
 
+    publish_data(timestamp, data)
+
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO)
 
@@ -42,5 +46,5 @@ if __name__ == "__main__":
 
     holder = Holder(HOST, PORT, [MQTT_TEMP, MQTT_HUM, MQTT_PRES])
     holder.on_end = store_record
-    while True:
-        pass
+
+    web.run_app(app, host='127.0.0.1', port=8080)

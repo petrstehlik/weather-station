@@ -79,7 +79,7 @@ class Holder():
         topic = str(msg.topic).split('/')
 
         try:
-            payload = str(msg.payload).split(';')
+            payload = str(msg.payload.decode("utf-8")).split(';')
         except Exception as e:
             self.log.error("Failed to load JSON payload. Reason: %s" % str(e))
             return
