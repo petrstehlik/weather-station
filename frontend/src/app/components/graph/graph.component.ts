@@ -22,18 +22,18 @@ export class GraphComponent implements OnInit {
      */
     private data: Object;
     private graphRef;
-    private config: Object;
+    private config;
 
 
     @Input('data')
     set setData(data) {
-        console.log(data)
-
         if (this.config == undefined) {
             this.initConfig();
         }
 
-        if (data !== undefined && Object.keys(data).length !== 0) {
+        console.log(data)
+
+        if (data != undefined && Object.keys(data).length !== 0) {
             this.data = data;
             if (this.graphRef === undefined) {
                 console.log(this.data)
@@ -95,6 +95,16 @@ export class GraphComponent implements OnInit {
               strokeWidth: 2,
               strokeBorderWidth: 0,
               highlightCircleSize: 2
+            },
+            axes : {
+                x : {
+                    drawAxis : false,
+                    drawGrid : false
+                },
+                y : {
+                    drawAxis : false,
+                    drawGrid : false
+                }
             }
         };
     }

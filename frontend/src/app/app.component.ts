@@ -34,31 +34,20 @@ const temp = [
     </h1>
 
     <div class="grid">
-        <ex-graph
-            class="col"
-            height="100"
-            [labels]="['Temperature', 'Value']"
-            [data]="tempData"
-            [loading]="tempReady"
-            range="null"
-            topTitle="Temperature"
-        ></ex-graph>
         <div class="col">
-            {{ tempData['data'][tempData['data'].length -1] }}
+            <ex-graph
+                height="100"
+                [labels]="['Temperature', 'Value']"
+                [data]="data?.temperature"
+                [loading]="tempLoad"
+                range="null"
+                topTitle="Temperature"
+                labelY="null"
+            ></ex-graph>
         </div>
-    </div>
-
-    <div class="grid">
-        <ex-graph
-            class="col"
-            height="100"
-            [labels]="['Temperature', 'Value']"
-            [data]="tempData"
-            [loading]="tempReady"
-            range="null"
-            topTitle="Temperature"
-        ></ex-graph>
-        <div class="col"></div>
+        <div class="col big-num" *ngIf="!tempLoad">
+            {{ data?.temperature?.data[data?.temperature?.data.length-1][1] }}
+        </div>
 
     </div>
 
@@ -67,24 +56,42 @@ const temp = [
 })
 export class AppComponent implements OnInit {
     tempData : Object = {'data' : [], 'labels' : []};
-    tempReady = true;
+    tempLoad = true;
 
     ws;
+    data : Object = {
+        temperature : undefined
+    };
 
     ngOnInit() {
         this.setData();
         this.ws = io('/ws', { reconnection: true });
 
-        this.ws.on('connect', this.connect);
+        this.ws.on('connect', () => {
+            console.debug("Successfully connected to WS")
+        });
+
+        this.ws.on('init', (data) => {
+            this.data = JSON.parse(data);
+            this.parseData();
+        });
     }
 
     public setData() {
         this.tempData['data'] = temp;
         this.tempData['labels'] = ['Temperature', 'Value']
-        this.tempReady = false;
     }
 
-    private connect() {
-        console.debug("Successfully connected to WS")
+    private parseData() {
+        for (let item of this.data['temperature'] ) {
+            item[0] = new Date(item[0])
+        }
+        console.log(this.data)
+        this.data["temperature"] = {
+            "labels" : ['Temperature', 'Value'],
+            "data" : this.data["temperature"]
+        }
+        this.tempLoad = false;
     }
+
 }
