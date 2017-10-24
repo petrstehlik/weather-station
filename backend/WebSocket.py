@@ -1,13 +1,20 @@
 from aiohttp import web
-import socketio
+#import socketio
 import json
 
 import time
 import sqlite3
 
-sio = socketio.AsyncServer(async_mode='aiohttp')
-app = web.Application()
-sio.attach(app)
+#sio = socketio.AsyncServer(async_mode='aiohttp')
+#app = web.Application()
+#sio.attach(app)
+
+from flask import Flask, render_template
+from flask_socketio import SocketIO, emit, join_room
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'secret!'
+sio = SocketIO(app)
 
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -36,21 +43,18 @@ def getAll():
 
 
 @sio.on('connect', namespace='/ws')
-async def connect(sid, environ):
+def connect():
     #publish_data(1000, {"temperature" : 0, "humidity" : 0, "pressure" : 0})
-    await sio.emit('init', json.dumps(getAll()), namespace="/ws")
-
-@sio.on('disconnect', namespace='/ws')
-def disconnect(sid):
-    print('disconnect ', sid)
+    join_room('default')
+    sio.emit('init', json.dumps(getAll()), namespace="/ws", room = 'default')
 
 def publish_data(ts, data):
     log.info("Publishing new data")
-    sio.send(json.dumps({
+    sio.emit('data', json.dumps({
         "temperature" : [ts * 1000, data['temperature']],
         "humidity" : [ts * 1000, data['humidity']],
         "pressure" : [ts * 1000, data['pressure']],
-    }), namespace="/ws")
+    }), room = 'default', namespace = '/ws')
 
 if __name__ == '__main__':
     web.run_app(app, host='127.0.0.1', port=8080)
