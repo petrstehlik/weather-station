@@ -1,14 +1,6 @@
-from aiohttp import web
-#import socketio
 import json
-
 import time
 import sqlite3
-
-#sio = socketio.AsyncServer(async_mode='aiohttp')
-#app = web.Application()
-#sio.attach(app)
-
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit, join_room
 

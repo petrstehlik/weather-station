@@ -1,7 +1,5 @@
 import logging
 import sqlite3
-from aiohttp import web
-import asyncio
 
 from Holder import Holder
 from WebSocket import getAll, app, publish_data, sio
