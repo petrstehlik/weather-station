@@ -1,3 +1,6 @@
 [submodule "DHT11_Python"]
 	path = modules/DHT11_Python
 	url = https://github.com/szazo/DHT11_Python.git
+[submodule "modules/Adafruit_Python_MCP3008"]
+	path = modules/Adafruit_Python_MCP3008
+	url = https://github.com/adafruit/Adafruit_Python_MCP3008.git
