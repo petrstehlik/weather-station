@@ -7,11 +7,15 @@ import logging
 
 import dht
 import bmp
+import light
+import moisture
 
 # CONFIGURATION
 MQTT_TEMP = "home/ws/sensor/temperature"
 MQTT_HUM = "home/ws/sensor/humidity"
 MQTT_PRES = "home/ws/sensor/pressure"
+MQTT_LIGHT = "home/ws/sensor/light"
+MQTT_MOISTURE = "home/ws/sensor/moisture"
 HOST = "10.0.0.32"
 
 # Logger initialization
@@ -19,9 +23,9 @@ logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger(__name__)
 
 # initialize GPIO
-GPIO.setwarnings(False)
-GPIO.setmode(GPIO.BCM)
-GPIO.cleanup()
+#GPIO.setwarnings(False)
+#GPIO.cleanup()
+#GPIO.setmode(GPIO.BCM)
 
 # Variables
 humidity = 0
@@ -48,6 +52,8 @@ while True:
 	if time_i == 30:
 		data = bmp.read()
 		data["humidity"] = humidity/(i)
+		data["light"] = light.read()
+		data["moisture"] = moisture.read()
 		i = 0
 		time_i = 0
 		humidity = 0
@@ -56,7 +62,8 @@ while True:
 		log.debug("Sending MQTT messages")
 		publish.single(MQTT_TEMP,"{0};{1}".format(ts, data["temperature"]), hostname=HOST)
 		publish.single(MQTT_HUM,"{0};{1}".format(ts, data["humidity"]), hostname=HOST)
-		publish.single(MQTT_PRES,"{0};{1}".format(ts, data["pressure"]), hostname=HOST)
+		publish.single(MQTT_LIGHT,"{0};{1}".format(ts, data["light"]), hostname=HOST)
+		publish.single(MQTT_MOISTURE,"{0};{1}".format(ts, data["moisture"]), hostname=HOST)
 
 	time_i += 1
 	time.sleep(delay)
