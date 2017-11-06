@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
             <ex-graph
                 height="100"
                 [labels]="['Temperature', 'Value']"
-                [data]="data?.temperature"
+                [data]="data['temperature']"
                 [loading]="tempLoad"
                 range="null"
                 topTitle="Temperature"
@@ -31,7 +31,7 @@ import { HttpClient } from '@angular/common/http';
             <ex-graph
                 height="100"
                 [labels]="['Pressure', 'Value']"
-                [data]="data?.pressure"
+                [data]="data['pressure']"
                 [loading]="tempLoad"
                 range="null"
                 topTitle="Pressure"
@@ -49,7 +49,7 @@ import { HttpClient } from '@angular/common/http';
             <ex-graph
                 height="100"
                 [labels]="['Humidity', 'Value']"
-                [data]="data?.humidity"
+                [data]="data['humidity']"
                 [loading]="tempLoad"
                 range="null"
                 topTitle="Humidity"
@@ -67,7 +67,7 @@ import { HttpClient } from '@angular/common/http';
             <ex-graph
                 height="100"
                 [labels]="['Light', 'Value']"
-                [data]="data?.light"
+                [data]="data['light']"
                 [loading]="tempLoad"
                 range="null"
                 topTitle="Light"
@@ -85,7 +85,7 @@ import { HttpClient } from '@angular/common/http';
             <ex-graph
                 height="100"
                 [labels]="['Moisture', 'Value']"
-                [data]="data?.moisture"
+                [data]="data['moisture']"
                 [loading]="tempLoad"
                 range="null"
                 topTitle="Moisture"
@@ -111,7 +111,11 @@ export class AppComponent implements OnInit {
 
     ws;
     data : Object = {
-        temperature : undefined
+        temperature : undefined,
+        humidity : undefined,
+        pressure : undefined,
+        light : undefined,
+        moisture : undefined
     };
 
     constructor(private http: HttpClient) {}
