@@ -2,7 +2,7 @@ import logging
 import sqlite3
 
 from Holder import Holder
-from WebSocket import getAll, app, publish_data, sio
+from rest import app
 
 MQTT_TEMP = "home/ws/sensor/temperature"
 MQTT_HUM = "home/ws/sensor/humidity"
@@ -30,8 +30,6 @@ def store_record(timestamp, data):
     conn.commit()
     c.close()
 
-    publish_data(timestamp, data)
-
 if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG)
 
@@ -50,7 +48,4 @@ if __name__ == "__main__":
     holder = Holder(HOST, PORT, [MQTT_TEMP, MQTT_HUM, MQTT_PRES, MQTT_LIGHT, MQTT_MOISTURE])
     holder.on_end = store_record
 
-    #web.run_app(app, host='127.0.0.1', port=8080)
-    sio.run(app, debug=False, port=8080, host='0.0.0.0')
-    print("yay!")
-    sio.emit('data', "hello", namespace='/ws')
+    app.run(debug=False, port=8080, host='0.0.0.0')
