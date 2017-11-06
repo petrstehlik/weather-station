@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-declare const Dygraph;
-declare const io;
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -63,65 +61,93 @@ declare const io;
         </div>
 
     </div>
+
+     <div class="grid">
+        <div class="col">
+            <ex-graph
+                height="100"
+                [labels]="['Light', 'Value']"
+                [data]="data?.light"
+                [loading]="tempLoad"
+                range="null"
+                topTitle="Light"
+                labelY="null"
+            ></ex-graph>
+        </div>
+        <div class="col big-num" *ngIf="!tempLoad">
+            {{ data?.light?.data[data?.light?.data.length-1][1] }} %
+        </div>
+
+    </div>
+
+     <div class="grid">
+        <div class="col">
+            <ex-graph
+                height="100"
+                [labels]="['Moisture', 'Value']"
+                [data]="data?.moisture"
+                [loading]="tempLoad"
+                range="null"
+                topTitle="Moisture"
+                labelY="null"
+            ></ex-graph>
+        </div>
+        <div class="col big-num" *ngIf="!tempLoad">
+            {{ data['moisture']['data'][data['moisture']['data'].length-1][1] }} %
+        </div>
+
+    </div>
+
+
   `,
-  styles: []
+  styles: [],
+  providers : [HttpClient]
 })
 export class AppComponent implements OnInit {
     tempData : Object = {'data' : [], 'labels' : []};
     tempLoad = true;
+    interval = undefined;
+    metrics = ['temperature', 'humidity', 'pressure', 'light', 'moisture'];
 
     ws;
     data : Object = {
         temperature : undefined
     };
 
+    constructor(private http: HttpClient) {}
+
     ngOnInit() {
-        this.ws = io('/ws', { reconnection: true });
-
-        this.ws.on('connect', () => {
-            console.debug("Successfully connected to WS")
-        });
-
-        this.ws.on('init', (data) => {
-            this.data = JSON.parse(data);
+        this.http.get('/api/init').subscribe(data => {
+            this.data = data;
             this.parseData();
-        });
+            this.interval = setInterval(() => {
+                this.http.get('/api/latest').subscribe(data => {
+                    let t = this.data['temperature']["data"]
 
-        this.ws.on('data', (data) => {
-            console.log(data);
-            this.data['temperature'].push_back([new Date(data['temperature'][0]), data['temperature'][1]]);
-            this.data['humidity'].push_back([new Date(data['humidity'][0]), data['humidity'][1]]);
-            this.data['pressure'].push_back([new Date(data['pressure'][0]), data['pressure'][1]]);
+                    // Don't do anything if we have still old data
+                    if (t[t.length - 1][0] == new Date(data['temperature'][0]))
+                        return
+
+                    for (let item of this.metrics) {
+                        this.data[item]['data'].push([new Date(data[item][0]), data[item][1]]);
+                    }
+                })
+            }, 5000);
         });
     }
 
     private parseData() {
-        for (let item of this.data['temperature'] ) {
-            item[0] = new Date(item[0])
+        for (let metric of this.metrics) {
+            for (let item of this.data[metric] ) {
+                item[0] = new Date(item[0])
+            }
+
+            this.data[metric] = {
+                "labels" : [metric, 'Value'],
+                "data" : this.data[metric]
+            }
         }
 
-        for (let item of this.data['humidity'] ) {
-            item[0] = new Date(item[0])
-        }
-
-        for (let item of this.data['pressure'] ) {
-            item[0] = new Date(item[0])
-        }
-
-        this.data["temperature"] = {
-            "labels" : ['Temperature', 'Value'],
-            "data" : this.data["temperature"]
-        }
-
-        this.data["pressure"] = {
-            "labels" : ['Temperature', 'Value'],
-            "data" : this.data["pressure"]
-        }
-
-        this.data["humidity"] = {
-            "labels" : ['Temperature', 'Value'],
-            "data" : this.data["humidity"]
-        }
         this.tempLoad = false;
     }
 

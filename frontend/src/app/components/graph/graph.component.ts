@@ -31,12 +31,9 @@ export class GraphComponent implements OnInit {
             this.initConfig();
         }
 
-        console.log(data)
-
         if (data != undefined && Object.keys(data).length !== 0) {
             this.data = data;
             if (this.graphRef === undefined) {
-                console.log(this.data)
                 this.config['labels'] = this.data['labels'];
                 this.graphRef = new Dygraph(
                     this.chart.nativeElement,
