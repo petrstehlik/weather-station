@@ -121,11 +121,11 @@ export class AppComponent implements OnInit {
     constructor(private http: HttpClient) {}
 
     ngOnInit() {
-        this.http.get('/apiws/init').subscribe(data => {
+        this.http.get('/api/init').subscribe(data => {
             this.data = data;
             this.parseData();
             this.interval = setInterval(() => {
-                this.http.get('/apiws/latest').subscribe(data => {
+                this.http.get('/api/latest').subscribe(data => {
                     let t = this.data['temperature']["data"]
 
                     // Don't do anything if we have still old data
