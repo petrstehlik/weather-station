@@ -10,7 +10,8 @@
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "../node_modules/open-weather-icons/dist/fonts/"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -20,7 +21,8 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss"
+        "styles.scss",
+        "../node_modules/open-weather-icons/dist/css/open-weather-icons.css"
       ],
       "scripts": [
         "../node_modules/dygraphs/dist/dygraph.js"
