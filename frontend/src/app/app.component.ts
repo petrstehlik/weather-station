@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,95 +8,44 @@ import { HttpClient } from '@angular/common/http';
       Weather Station
     </h1>
 
-    <div class="grid">
-        <div class="col">
+    <small class="ts">
+        {{ data['temperature']['data'][data['temperature']['data'].length-1][0] | date : 'HH:mm:ss dd/M' }}
+    </small>
+
+<div class="cards">
+    <div class="card" *ngFor="let c of categories" [ngClass]="c['metric']">
+        <h3>{{ c['title'] }}</h3>
+        <div class="big-num" *ngIf="!tempLoad">
+            {{ data[c['metric']]['data'][data[c['metric']]['data'].length-1][1] | number : '1.1-2' }} {{ c['unit'] }}
+        </div>
+
+        <div class="graph">
             <ex-graph
-                height="100"
-                [labels]="['Temperature', 'Value']"
-                [data]="data['temperature']"
+                height="75"
+                [(data)]="data[c['metric']]"
+                labels="null"
                 [loading]="tempLoad"
                 range="null"
-                topTitle="Temperature"
+                topTitle="null"
                 labelY="null"
             ></ex-graph>
         </div>
-        <div class="col big-num" *ngIf="!tempLoad">
-            {{ data?.temperature?.data[data?.temperature?.data.length-1][1] }} °C
-        </div>
-
     </div>
 
-    <div class="grid">
-        <div class="col">
-            <ex-graph
-                height="100"
-                [labels]="['Pressure', 'Value']"
-                [data]="data['pressure']"
-                [loading]="tempLoad"
-                range="null"
-                topTitle="Pressure"
-                labelY="null"
-            ></ex-graph>
-        </div>
-        <div class="col big-num" *ngIf="!tempLoad">
-            {{ data?.pressure?.data[data?.pressure?.data.length-1][1] / 100 }} hPa
+    <div class="card">
+        <h3>Temp Outside</h3>
+        <div class="big-num" *ngIf="!weatherLoad">
+            Some val °C
         </div>
 
+        <div class="weather-item" *ngFor="let item of weather['list'] | slice:0:5">
+        Time: {{ item['dt'] }}
+        Temp : {{ item['main']['temp'] }}
+            {{ item | json }}
+        </div>
     </div>
 
-    <div class="grid">
-        <div class="col">
-            <ex-graph
-                height="100"
-                [labels]="['Humidity', 'Value']"
-                [data]="data['humidity']"
-                [loading]="tempLoad"
-                range="null"
-                topTitle="Humidity"
-                labelY="null"
-            ></ex-graph>
-        </div>
-        <div class="col big-num" *ngIf="!tempLoad">
-            {{ data?.humidity?.data[data?.humidity?.data.length-1][1] }} %
-        </div>
-
-    </div>
-
-     <div class="grid">
-        <div class="col">
-            <ex-graph
-                height="100"
-                [labels]="['Light', 'Value']"
-                [data]="data['light']"
-                [loading]="tempLoad"
-                range="null"
-                topTitle="Light"
-                labelY="null"
-            ></ex-graph>
-        </div>
-        <div class="col big-num" *ngIf="!tempLoad">
-            {{ data?.light?.data[data?.light?.data.length-1][1] }} %
-        </div>
-
-    </div>
-
-     <div class="grid">
-        <div class="col">
-            <ex-graph
-                height="100"
-                [labels]="['Moisture', 'Value']"
-                [data]="data['moisture']"
-                [loading]="tempLoad"
-                range="null"
-                topTitle="Moisture"
-                labelY="null"
-            ></ex-graph>
-        </div>
-        <div class="col big-num" *ngIf="!tempLoad">
-            {{ data['moisture']['data'][data['moisture']['data'].length-1][1] }} %
-        </div>
-
-    </div>
+</div>
 
 
   `,
@@ -106,8 +55,37 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
     tempData : Object = {'data' : [], 'labels' : []};
     tempLoad = true;
+    weatherLoad = false;
     interval = undefined;
+    weather = undefined;
+
     metrics = ['temperature', 'humidity', 'pressure', 'light', 'moisture'];
+    categories = [
+        {
+            'unit' : '°C',
+            'title' : 'Temperature',
+            'metric' : 'temperature'
+        },
+        {
+            'unit' : '%',
+            'title' : 'Humidity',
+            'metric' : 'humidity'
+        },
+        {
+            'unit' : 'Pa',
+            'title' : 'Pressure',
+            'metric' : 'pressure'
+        },
+        {
+            'unit' : '%',
+            'title' : 'Light',
+            'metric' : 'light'
+        },
+        {
+            'unit' : '%',
+            'title' : 'Moisture',
+            'metric' : 'moisture'
+        }]
 
     ws;
     data : Object = {
@@ -118,9 +96,10 @@ export class AppComponent implements OnInit {
         moisture : undefined
     };
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private ref: ChangeDetectorRef) {}
 
     ngOnInit() {
+        this.getWeather();
         this.http.get('/api/init').subscribe(data => {
             this.data = data;
             this.parseData();
@@ -129,12 +108,19 @@ export class AppComponent implements OnInit {
                     let t = this.data['temperature']["data"]
 
                     // Don't do anything if we have still old data
-                    if (t[t.length - 1][0] == new Date(data['temperature'][0]))
+                    if (t[t.length - 1][0].getTime() == new Date(data['temperature'][0]).getTime())
                         return
 
+                    this.tempLoad = true;
+
                     for (let item of this.metrics) {
+                        let newdata = this.data;
                         this.data[item]['data'].push([new Date(data[item][0]), data[item][1]]);
+                        this.ref.markForCheck();
+                        this.ref.detectChanges();
                     }
+
+                    this.tempLoad = false;
                 })
             }, 5000);
         });
@@ -153,6 +139,12 @@ export class AppComponent implements OnInit {
         }
 
         this.tempLoad = false;
+    }
+
+    private getWeather() {
+        this.http.get('/api/weather').subscribe(data => {
+            this.weather = data;
+        })
     }
 
 }
