@@ -18,7 +18,7 @@ APPID = "c11eabf697cfe8167bb53d3c1a7cbd20"
 @app.route('/init')
 def init():
     c = conn.cursor()
-    c.execute("SELECT * FROM weather_data WHERE time >= {}".format(int(time.time()) - (60 * 60 * 2)))
+    c.execute("SELECT * FROM weather_data WHERE time >= {}".format(int(time.time()) - (60 * 60 * 12)))
 
     res = c.fetchall()
 
