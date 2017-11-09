@@ -41,3 +41,38 @@ body {
     }
 }
 
+.weather {
+    .forecast {
+        display: flex;
+        .forecast-item {
+            flex: 1 1 20%;
+            text-align: center;
+
+            h2 {
+                font-size: 3rem;
+                padding: 0;
+                margin: 0.25rem 0 0 0;
+            }
+
+            h4 {
+                margin: 0;
+                font-size: 1.5rem;
+            }
+
+            small {
+                font-size: 0.65rem;
+                color: #AAA;
+            }
+
+            .minmax {
+                background: #EEE;
+                border-radius: 2px;
+                padding: 2px 3px;
+                margin: 0 0 1rem 0;
+                font-size: 0.75rem;
+                display: inline-block;
+            }
+        }
+    }
+}
+

@@ -3,61 +3,17 @@ import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <h1>
-      Weather Station
-    </h1>
-
-    <small class="ts">
-        {{ data['temperature']['data'][data['temperature']['data'].length-1][0] | date : 'HH:mm:ss dd/M' }}
-    </small>
-
-<div class="cards">
-    <div class="card" *ngFor="let c of categories" [ngClass]="c['metric']">
-        <h3>{{ c['title'] }}</h3>
-        <div class="big-num" *ngIf="!tempLoad">
-            {{ data[c['metric']]['data'][data[c['metric']]['data'].length-1][1] | number : '1.1-2' }} {{ c['unit'] }}
-        </div>
-
-        <div class="graph">
-            <ex-graph
-                height="75"
-                [(data)]="data[c['metric']]"
-                labels="null"
-                [loading]="tempLoad"
-                range="null"
-                topTitle="null"
-                labelY="null"
-            ></ex-graph>
-        </div>
-    </div>
-
-    <div class="card">
-        <h3>Temp Outside</h3>
-        <div class="big-num" *ngIf="!weatherLoad">
-            Some val °C
-        </div>
-
-        <div class="weather-item" *ngFor="let item of weather['list'] | slice:0:5">
-        Time: {{ item['dt'] }}
-        Temp : {{ item['main']['temp'] }}
-            {{ item | json }}
-        </div>
-    </div>
-
-</div>
-
-
-  `,
+  templateUrl: './app.component.html',
   styles: [],
   providers : [HttpClient]
 })
 export class AppComponent implements OnInit {
     tempData : Object = {'data' : [], 'labels' : []};
     tempLoad = true;
-    weatherLoad = false;
+    weatherLoad = true;
     interval = undefined;
     weather = undefined;
+    forecast = undefined;
 
     metrics = ['temperature', 'humidity', 'pressure', 'light', 'moisture'];
     categories = [
@@ -142,8 +98,11 @@ export class AppComponent implements OnInit {
     }
 
     private getWeather() {
+        this.weatherLoad = true;
         this.http.get('/api/weather').subscribe(data => {
-            this.weather = data;
+            this.weather = data['weather'];
+            this.forecast = data['forecast']
+            this.weatherLoad = false;
         })
     }
 
