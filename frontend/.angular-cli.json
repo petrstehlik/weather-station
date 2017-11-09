@@ -22,10 +22,10 @@
       "prefix": "app",
       "styles": [
         "styles.scss",
-        "../node_modules/open-weather-icons/dist/css/open-weather-icons.css"
+        "open-weather-icons.scss"
       ],
       "scripts": [
-        "../node_modules/dygraphs/dist/dygraph.js"
+        "../node_modules/dygraphs/dist/dygraph.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
