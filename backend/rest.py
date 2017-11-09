@@ -73,9 +73,16 @@ def latest():
 
 @app.route("/weather")
 def weather():
-    r = requests.get("http://api.openweathermap.org/data/2.5/forecast?id=3078610&units=metric&appid={}".format(APPID))
+    forecast = requests.get("http://api.openweathermap.org/data/2.5/forecast?id=3078610&units=metric&appid={}".format(APPID))
+    weather = requests.get("http://api.openweathermap.org/data/2.5/weather?id=3078610&units=metric&appid={}".format(APPID))
 
-    if r.status_code == 200:
-        return(json.dumps(r.json()))
+    if forecast.status_code == 200 and weather.status_code == 200:
+        response = {
+                "weather" : weather.json(),
+                "forecast" : forecast.json()
+            }
+        return(json.dumps(response))
     else:
         print(str(r))
+
+    return(json.dumps(forecast.json()), 500)
