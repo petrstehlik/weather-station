@@ -2,15 +2,15 @@
       Weather Station
     </h1>
 
-    <small class="ts">
-        {{ data?.temperature?.data[data?.temperature?.data.length-1][0] | date : 'HH:mm:ss dd/M' }}
+    <small class="ts" *ngIf="!tempLoad">
+        {{ data['temperature'].data[data['temperature'].data.length-1][0] | date : 'HH:mm:ss dd/M' }}
     </small>
 
 <div class="cards">
     <div class="card" *ngFor="let c of categories" [ngClass]="c['metric']">
         <h3>{{ c['title'] }}</h3>
         <div class="big-num" *ngIf="!tempLoad">
-            {{ data[c['metric']]['data'][data[c['metric']]['data'].length-1][1] | number : '1.1-2' }} {{ c['unit'] }}
+            {{ data[c['metric']]['data'][data[c['metric']]['data'].length-1][1] | number : '1.0-1' }} {{ c['unit'] }}
         </div>
 
         <div class="graph">
@@ -29,8 +29,8 @@
     <div class="card weather" *ngIf="!weatherLoad">
         <h3>Temp Outside</h3>
         <div class="big-num">
-            <small><i class="owi owi-{{ weather['weather'][0]['icon'] }}"></i></small>
-            {{ weather['main']['temp'] }} °C
+            <i class="owi owi-{{ weather['weather'][0]['icon'] }}"></i>
+            {{ weather['main']['temp'] | number : '1.0-1' }} <small>°C</small>
         </div>
 
         <div class="forecast">
@@ -40,10 +40,10 @@
                     <i class="owi owi-{{ item['weather'][0]['icon'] }}"></i>
                 </h2>
                 <h4>
-                    {{ item['main']['temp'] }} °C
+                    {{ item['main']['temp'] | number : '1.0-1' }} <small>°C</small>
                 </h4>
                 <span class="minmax">
-                    {{ item['main']['temp_min'] }} / {{ item['main']['temp_max'] }}
+                    {{ item['main']['temp_min'] | number : '1.0-1' }} / {{ item['main']['temp_max'] | number : '1.0-1' }}
                 </span>
             </div>
         </div>

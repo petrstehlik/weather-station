@@ -38,6 +38,17 @@ body {
     .big-num {
         font-size: 3rem;
         text-align: center;
+
+        small {
+            font-size: 1.5rem;
+            color: #AAA;
+            vertical-align: middle;
+        }
+
+        i {
+            font-size: smaller;
+            vertical-align: middle;
+        }
     }
 }
 

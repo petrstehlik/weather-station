@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Latest } from './models/Latest';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,7 @@ export class AppComponent implements OnInit {
             'metric' : 'humidity'
         },
         {
-            'unit' : 'Pa',
+            'unit' : 'hPa',
             'title' : 'Pressure',
             'metric' : 'pressure'
         },
@@ -60,7 +61,7 @@ export class AppComponent implements OnInit {
             this.data = data;
             this.parseData();
             this.interval = setInterval(() => {
-                this.http.get('/api/latest').subscribe(data => {
+                this.http.get<Latest>('/api/latest').subscribe(data => {
                     let t = this.data['temperature']["data"]
 
                     // Don't do anything if we have still old data
