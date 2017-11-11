@@ -62,6 +62,7 @@ while True:
 		log.debug("Sending MQTT messages")
 		publish.single(MQTT_TEMP,"{0};{1}".format(ts, data["temperature"]), hostname=HOST)
 		publish.single(MQTT_HUM,"{0};{1}".format(ts, data["humidity"]), hostname=HOST)
+		publish.single(MQTT_PRES,"{0};{1}".format(ts, data["pressure"]), hostname=HOST)
 		publish.single(MQTT_LIGHT,"{0};{1}".format(ts, data["light"]), hostname=HOST)
 		publish.single(MQTT_MOISTURE,"{0};{1}".format(ts, data["moisture"]), hostname=HOST)
 
