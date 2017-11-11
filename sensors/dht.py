@@ -17,9 +17,5 @@ def read():
 	For reading DHT11 sensor which is very unreliable
 	"""
 	log.debug("Reading DHT11 sensor")
-	vals = []
-
-    for i in range(5):
-        vals.append(dht.read())
-	return (average(vals))
+	return (dht.read())
 

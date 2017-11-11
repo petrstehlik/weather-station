@@ -9,6 +9,7 @@ import dht
 import bmp
 import light
 import moisture
+from average import average
 
 # CONFIGURATION
 MQTT_TEMP = "home/ws/sensor/temperature"
@@ -28,7 +29,7 @@ log = logging.getLogger(__name__)
 #GPIO.setmode(GPIO.BCM)
 
 # Variables
-humidity = 0
+humidity = []
 i = 0
 time_i = 0
 
@@ -46,17 +47,17 @@ while True:
 
 	result = dht.read()
 	if result.is_valid():
-		humidity += result.humidity
+		humidity.append(result.humidity)
 		i += 1
 
 	if time_i == 30:
 		data = bmp.read()
-		data["humidity"] = humidity/(i)
+		data["humidity"] = average(humidity)
 		data["light"] = light.read()
 		data["moisture"] = moisture.read()
 		i = 0
 		time_i = 0
-		humidity = 0
+		humidity = []
 		ts = int(time.time())
 
 		log.debug("Sending MQTT messages")

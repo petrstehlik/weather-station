@@ -14,12 +14,12 @@ CS   = 25
 mcp = Adafruit_MCP3008.MCP3008(clk=CLK, cs=CS, miso=MISO, mosi=MOSI)
 
 def read():
-    """
-    Read 5 values from ADC
-    """
-	log.debug("Reading light sensor")
+	"""
+	Read 5 values from ADC
+	"""
+	log.debug("Reading moisture sensor")
 	vals = []
-    for i in range(5):
-	    vals.append(mcp.read_adc(7))
+	for i in range(5):
+		vals.append(mcp.read_adc(7))
 
 	return(average(vals))

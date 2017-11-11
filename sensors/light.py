@@ -17,8 +17,8 @@ def read():
 	log.debug("Reading light sensor")
 	vals = []
 
-    for i in range(5):
-        vals.append(mcp.read_adc(0))
+	for i in range(5):
+		vals.append(mcp.read_adc(0))
 
 	return(average(vals))
 

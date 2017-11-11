@@ -1,5 +1,6 @@
 import Adafruit_BMP.BMP085 as BMP085
 import logging
+from average import average
 
 log = logging.getLogger(__name__)
 
@@ -14,16 +15,16 @@ def read():
 	"""
 	log.debug("Reading BMP180 sensor")
 	r = range(5)
-    vals = {
-            "temperature" : [bmp.read_temperature() for _ in r],
-            "pressure" : [bmp.read_pressure() for _ in r],
-            "alt" : [bmp.read_altitude() for _ in r],
-            "sea_pressure" : [bmp.read_sealevel_pressure() for _ in r]
-            }
+	vals = {
+			"temperature" : [bmp.read_temperature() for _ in r],
+			"pressure" : [bmp.read_pressure() for _ in r],
+			"alt" : [bmp.read_altitude() for _ in r],
+			"sea_pressure" : [bmp.read_sealevel_pressure() for _ in r]
+			}
 
-    return({
-            "temperature" : average(vals['temperature']),
-            "pressure" : average(vals['pressure']),
-            "alt" :  average(vals['alt'])),
-            "sea_pressure" :  average(vals['sea_pressure'])
-            })
+	return({
+		"temperature" : average(vals['temperature']),
+		"pressure" : average(vals['pressure']),
+		"alt" :  average(vals['alt']),
+		"sea_pressure" :  average(vals['sea_pressure'])
+		})
