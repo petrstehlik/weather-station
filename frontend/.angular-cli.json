@@ -5,11 +5,13 @@
   },
   "apps": [
     {
+      "serviceWorker": true,
       "root": "src",
       "outDir": "dist",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "../node_modules/open-weather-icons/dist/fonts/"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -19,11 +21,11 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss"
+        "styles.scss",
+        "open-weather-icons.scss"
       ],
       "scripts": [
-        "../node_modules/dygraphs/dist/dygraph.js",
-        "../node_modules/socket.io-client/dist/socket.io.slim.js"
+        "../node_modules/dygraphs/dist/dygraph.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

@@ -1,6 +1,6 @@
 declare const Dygraph;
 
-import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, OnChanges, SimpleChanges } from '@angular/core';
 import { environment as env } from 'environments/environment';
 
 @Component({
@@ -8,7 +8,7 @@ import { environment as env } from 'environments/environment';
   templateUrl: './graph.component.html',
   styleUrls: ['./graph.component.scss']
 })
-export class GraphComponent implements OnInit {
+export class GraphComponent implements OnInit, OnChanges {
 
     /**
      * Data to render in the graph
@@ -20,35 +20,32 @@ export class GraphComponent implements OnInit {
      *      "data" : []
      * }
      */
-    private data: Object;
+    private _data: Object;
     private graphRef;
     private config;
 
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes) {
+            if (this._data != undefined && Object.keys(this._data).length !== 0) {
+                this.update()
+            }
+        }
+    }
 
-    @Input('data')
-    set setData(data) {
+    @Input()
+    set data(data) {
         if (this.config == undefined) {
             this.initConfig();
         }
 
-        console.log(data)
-
         if (data != undefined && Object.keys(data).length !== 0) {
-            this.data = data;
-            if (this.graphRef === undefined) {
-                console.log(this.data)
-                this.config['labels'] = this.data['labels'];
-                this.graphRef = new Dygraph(
-                    this.chart.nativeElement,
-                    this.data['data'],
-                    this.config);
-            } else {
-                this.graphRef.updateOptions({
-                    file : this.data['data'],
-                    labels : this.data['labels']
-                });
-            }
+            this._data = data;
+            this.update()
         }
+    }
+
+    get data() {
+        return this._data;
     }
 
     @Input('loading') loading: boolean;
@@ -77,9 +74,9 @@ export class GraphComponent implements OnInit {
 
     private initConfig() {
         this.config = {
-            labels : this.labels,
+            //labels : this.labels,
             hideOverlayOnMouseOut : true,
-            ylabel: this.labelY,
+            //ylabel: this.labelY,
             title : "",
             legend: 'follow',
             labelsDiv : this.labelsDivRef.nativeElement,
@@ -91,6 +88,7 @@ export class GraphComponent implements OnInit {
             valueRange : this.range,
             stackedGraph : this.stacked,
             plotter : this.bar ? this.barChartPlotter : null,
+            rightGap : 0,
             highlightSeriesOpts: {
               strokeWidth: 2,
               strokeBorderWidth: 0,
@@ -107,6 +105,21 @@ export class GraphComponent implements OnInit {
                 }
             }
         };
+    }
+
+    public update() {
+        if (this.graphRef === undefined) {
+            this.config['labels'] = this._data['labels'];
+            this.graphRef = new Dygraph(
+                this.chart.nativeElement,
+                this._data['data'],
+                this.config);
+        } else {
+            this.graphRef.updateOptions({
+                file : this._data['data'],
+                labels : this._data['labels']
+            });
+        }
     }
 
     public moveLabel(event, x, points, row, seriesName) {

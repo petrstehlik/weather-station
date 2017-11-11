@@ -73,6 +73,8 @@ class Holder():
             temperature
             humidity
             pressure
+            light
+            moisture
         """
         self.log.info("Received message '%s': %s " % (msg.topic, msg.payload))
 

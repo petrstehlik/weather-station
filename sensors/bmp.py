@@ -13,10 +13,17 @@ def read():
 		* pressure (sea level and normal)
 	"""
 	log.debug("Reading BMP180 sensor")
-	return({
-		"temperature" : bmp.read_temperature(),
-		"pressure" : bmp.read_pressure(),
-		"alt" : int(bmp.read_altitude()),
-		"sea_pressure" : bmp.read_sealevel_pressure()
-		})
+	r = range(5)
+    vals = {
+            "temperature" : [bmp.read_temperature() for _ in r],
+            "pressure" : [bmp.read_pressure() for _ in r],
+            "alt" : [bmp.read_altitude() for _ in r],
+            "sea_pressure" : [bmp.read_sealevel_pressure() for _ in r]
+            }
 
+    return({
+            "temperature" : average(vals['temperature']),
+            "pressure" : average(vals['pressure']),
+            "alt" :  average(vals['alt'])),
+            "sea_pressure" :  average(vals['sea_pressure'])
+            })
