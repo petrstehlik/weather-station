@@ -1,0 +1,9 @@
+{
+    "name" : "Weather Station",
+    "short_name" : "WS",
+    "theme_color" : "#FFFFFF",
+    "background_color" : "#3278c80d",
+    "start_url" : "/",
+    "display" : "standalone",
+    "orientation" : "portrait"
+}
