@@ -23,11 +23,11 @@
 /deep/ .labels {
     border: 1px solid darken(#FFF, 10%);
     border-radius: 2px;
-    position: fixed;
+    position: absolute;
     background: #FFF;
     padding: 0.5em;
     font-size: 0.75em;
-    display: none;
+    display: inline-block;
     z-index: 9999;
 
     span {

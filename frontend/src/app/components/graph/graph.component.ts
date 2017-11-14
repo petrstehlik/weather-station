@@ -128,9 +128,9 @@ export class GraphComponent implements OnInit, OnChanges {
         const label = (event.composedPath())[1].lastChild;
 
         // Set styles
-        label.style.display = 'block';
-        label.style.left = (event.clientX + env.chart.labels.offsetX) + 'px';
-        label.style.top = (event.clientY + env.chart.labels.offsetY) + 'px';
+        label.style.display = 'inline-block';
+        label.style.left = (env.chart.labels.offsetX) + 'px';
+        label.style.top = (env.chart.labels.offsetY) + 'px';
     }
 
     private legendFormatter(data): void {

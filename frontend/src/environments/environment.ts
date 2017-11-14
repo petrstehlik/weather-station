@@ -9,8 +9,8 @@ export const environment = {
     chart : {
         height : 250,           // Default height of the chart's container (px)
         labels : {
-            offsetX : 10,       // X-axis offset for label position (px)
-            offsetY : 20        // Y-axis offset for label position (px)
+            offsetX : 5,       // X-axis offset for label position (px)
+            offsetY : 5        // Y-axis offset for label position (px)
         }
     },
 };
