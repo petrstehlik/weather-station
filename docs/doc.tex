@@ -1,0 +1,60 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[left=2cm,text={17cm,25cm},top=2.5cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+
+\graphicspath{ {figs/} }
+
+\begin{document}
+
+\begin{center}
+	\LARGE{SIN -- Inteligentní systémy}\\
+	\Large{Implementace meteostanice}
+	\vspace{0.5cm}
+
+    \begin{centering}
+    \small{
+        Bc. Petr Stehlík <xstehl14@stud.fit.vutbr.cz>\\Bc. Matej Vido <xvidom00@stud.fit.vutbr.cz>
+        }
+    \end{centering}
+
+	\vspace{0.2cm}
+
+\end{center}
+
+\section{Úvod}
+Cílem projektu je navrhnout a implementovat meteostanici využívající MQTT protokol pro zasílání naměřených hodnot serveru. Server implementuje databázi a webové grafické uživatelské rozhraní (GUI), analyzuje historické hodnoty a na jejich základě řídí akce aktuátorů.
+
+Meteostanice měří teplotu, vlhkost a tlak vzduchu; vlhkost v květináči a světelnou intenzitu. Navržené aktuátory jsou ovládání žaluzií, klimatizace, topení a zavlažování rostlin. Vše je autonomně ovládáno na základě předem stanovených pravidel.
+
+GUI zobrazuje aktuální a historické naměřené hodnoty jednotlivých senzorů, trendy a naposledy vykonané akce aktuátorů společně s krátkodobou předpovědí počasí získanou z volně dostupných zdrojů.
+
+\section{Nástroje pro monitoring a řízení}
+Grafana (grafy)
+Icinga, Nagios
+BeeeOn (https://beeeon.org/wiki/Main\_Page)
+
+\section{Architektura a implementace}
+\subsection{HW}
+zapojení senzorů + názvy, co měří, jak měří
+schéma HW zapojení (rpis)
+aktuátory
+
+\subsection{SW}
+aktuátory
+mqtt (co to je, jak se pouziva) + mosquitto + topic schemes
+zapojení dashboardu (fe, be, db, rest api)
+popis technologii (angular, flask, sqlite)
+
+\section{Výsledky}
+\label{sec:res}
+
+\section{Závěr}
+\label{sec:sum}
+
+\end{document}
