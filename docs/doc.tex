@@ -35,15 +35,48 @@ Meteostanice měří teplotu, vlhkost a tlak vzduchu; vlhkost v květináči a s
 GUI zobrazuje aktuální a historické naměřené hodnoty jednotlivých senzorů, trendy a naposledy vykonané akce aktuátorů společně s krátkodobou předpovědí počasí získanou z volně dostupných zdrojů.
 
 \section{Nástroje pro monitoring a řízení}
-Grafana (grafy)
-Icinga, Nagios
-BeeeOn (https://beeeon.org/wiki/Main\_Page)
+Na trhu je velké množství dostupných nástrojů pro monitoring a řízení a to i na poli chytrých domácností. Je zde mnoho komerčních a uzavřených systémů pro automatizaci domácnosti. V současnosti nejznámější a pravděpodobně i nejrozšířenější je Apple Home\footnote{\url{https://www.apple.com/lae/ios/home/}}, který využívá protokolu Homekit také od společnosti Apple. Na trhu existuje pro Apple Home velké množství produktů a neustále se jejich počet zvyšuje. Existuje ale i mnoho open-source nástrojů pro řízení dománocsti. Jejich nejrozšířenější zastupitele zde v krátkosti budou popsány.
+
+\subsection{Grafana}
+Grafana je vizualizační a analytický nástroj pro data zachycená v čase. Grafana samotná není primárně určena pro monitoring a řízení chytrých domácností, ale je natolik upravitelná, že existují konfigurace, které toto užití zpřístupňují. Je dostupná s mnoha rozšířeními a zdroji dat. Uživatel si vytvoří dashboard, který si následně nakonfiguruje a seskládá z dostupných modulů. Tyto moduly mimo dalších funkcionalit umožňují zobrazit čárový graf, jednotlivé hodnoty, trendy hodnot a s pomocí modulů i různé přepínače.
+
+\subsection{Domoticz}
+Domoticz je kompletním open-source systémem pro domácí automatizaci. Tento nástroj dovoluje monitorovat, řídit a konfigurovat mnoho různých zařízení od různých výrobců. Disponuje i automatickým učením senzorů a aktuátorů. Rozhraní pro uživatele je vytvořeno jako webová stránka dostupná na stroji s lokální instalací Domoticz.
+
+\subsection{OpenHAB}
+OpenHAB je dalším velmi známým zástupcem open-source nástrojem pro domácí automatizaci. Podporuje velké množství platforem, výrobců a zařízení. Dokáže integrovat mnoho systémů do jednoho centrálního řešení, které lze ovládat mobilní aplikací, webových rozhraním nebo nativní desktopovou aplikací. Pro automatizaci disponuje rozsáhlým systémem pro tvorbu komplexních pravidel.
+
+\subsection{Home Assistant}
+Home Assistant je primárně navrhován pro užívání na Raspberry Pi. Jako předchozí nástroje také podporuje široké množství výrobců a zařízení. Také disponuje konfigurovatelným webových rozhraním s přehledy zařízení a kontrolou aktuátorů.
+
+\subsection{BeeeOn}
+(https://beeeon.org/wiki/Main\_Page)
+BeeeOn je systém pro domácí automatizaci vyvíjený na FIT VUT v Brně. Tento systém je primárně vyvíjen jako bezpečná domácí brána pro různé IoT zařízení. Oproti předchozím systémům je nutno pro plnou funkcionalitu systému vlastnit domácí bránu, kterou lze propojit s několika výrobci a jejich zařízeními. BeeeOn disponuje Android mobilní aplikací pro ovládání domácnosti a prototypem webového rozhraní.
 
 \section{Architektura a implementace}
-\subsection{HW}
-zapojení senzorů + názvy, co měří, jak měří
-schéma HW zapojení (rpis)
-aktuátory
+\subsection{Hardware}
+Základem pro hardware byly zvoleny Raspberry Pi 2 jako server a Raspberry Pi Zero W jako samotná meteostanice. Server realizován jako Raspberry Pi 2 zpřístupňuje uživateli minimalistické webové rozhraní a slouží jako MQTT broker pro meteostanici. Také jsou zde ukládány všechny naměřené hodnoty do SQLite3 databáze.
+
+K Raspberry Pi Zero W jsou připojeny následující senzory:
+
+\begin{itemize}
+    \item DHT11 - digitální senzor pro měření teploty a vlhkosti vzduchu
+    \item BMP180 - digitální senzor pro měření barometrického tlaku, teploty a nadmořské výšky
+    \item TEMT6000 - analogový senzor pro měření intenzity okolního světla
+    \item YL-69 společně s YL-38 - analogový senzor pro měření vlhkosti půdy
+\end{itemize}
+
+Pro konverzi analogových senzorů je použit AD převodník MCP3008.
+
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.5\linewidth]{weather-station-scheme}
+    \caption{This is a figure.}
+\end{figure}
+
+\todo[inline]{schéma HW zapojení (rpis)}
+\todo[inline]{aktuátory}
 
 \subsection{SW}
 aktuátory
