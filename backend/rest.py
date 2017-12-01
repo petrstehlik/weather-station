@@ -4,6 +4,7 @@ import sqlite3
 import json
 import time
 import requests
+import numpy
 
 logging.basicConfig(level=logging.DEBUG)
 log = logging.getLogger()
@@ -14,6 +15,15 @@ conn = sqlite3.connect('db.sq3', check_same_thread=False)
 conn.row_factory = sqlite3.Row
 
 APPID = "c11eabf697cfe8167bb53d3c1a7cbd20"
+
+TREND_VAL_COUNT = 20
+TREND_ANGLE = 45
+TREND_THRESHOLD = dict()
+TREND_THRESHOLD["temperature"] = 0.2
+TREND_THRESHOLD["humidity"]    = 2
+TREND_THRESHOLD["pressure"]    = 0.2
+TREND_THRESHOLD["light"]       = 2
+TREND_THRESHOLD["moisture"]    = 0.2
 
 @app.route('/init')
 def init():
@@ -46,6 +56,44 @@ def init():
 
     return(json.dumps(result))
 
+def val_correction(val_type, val):
+    if val_type == "light":
+        val = val / 10.23
+
+    elif val_type == "moisture":
+        val = (1023 - val) / 10.23
+
+    elif val_type == "pressure":
+            val = val / 100.0
+
+    return val
+
+def get_trends():
+    c = conn.cursor()
+    c.execute("SELECT * FROM weather_data ORDER BY time DESC LIMIT {}".format(TREND_VAL_COUNT))
+
+    res = c.fetchall()
+
+    result = dict()
+
+    for i in ["temperature", "humidity", "pressure", "light", "moisture"]:
+        data = [val_correction(i, x[i]) for x in res]
+        x_vals = numpy.arange(0, len(data))
+        y_vals = numpy.array(data)
+        polyfit_vals = numpy.polyfit(x_vals, y_vals, 1)
+        a = polyfit_vals[0]
+        diff = len(data) * a
+        if diff < 0:
+            sign = -1
+        else:
+            sign = 1
+        if abs(diff) >= TREND_THRESHOLD[i]:
+            result[i] = sign * TREND_ANGLE
+        else:
+            result[i] = 0
+
+    return result
+
 @app.route('/latest')
 def latest():
     c = conn.cursor()
@@ -55,19 +103,12 @@ def latest():
 
     result = dict()
 
+    trends = get_trends()
+
     for i in ["temperature", "humidity", "pressure", "light", "moisture"]:
-        val = res[0][i]
-        if i == "light":
-            val = val / 10.23
+        val = val_correction(i, res[0][i])
 
-        elif i == "moisture":
-            val = (1023 - val) / 10.23
-
-        elif i == "pressure":
-                val = val / 100.0
-
-
-        result[i] = [res[0]['time'] * 1000, val]
+        result[i] = [res[0]['time'] * 1000, val, trends[i]]
 
     return(json.dumps(result))
 
