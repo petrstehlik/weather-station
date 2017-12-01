@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+"""
+Author: Matej Vido, xvidom00@stud.fit.vutbr.cz
+"""
 
 import sqlite3
 import json

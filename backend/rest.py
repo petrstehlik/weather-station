@@ -1,3 +1,8 @@
+"""
+Author: Petr Stehlik <xstehl14@stud.fit.vutbr.cz>
+Author: Matej Vido <xvidom00@stud.fit.vutbr.cz>
+"""
+
 from flask import Flask
 import logging
 import sqlite3

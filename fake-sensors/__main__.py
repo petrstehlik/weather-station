@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 """
+Author: Petr Stehlik <xstehl14@stud.fit.vutbr.cz>
+Author: Matej Vido, xvidom00@stud.fit.vutbr.cz
+
 Replay portion of weather station data to MQTT channels
 
 Usage: python replay.py [DELAY]
