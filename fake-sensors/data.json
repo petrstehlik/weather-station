@@ -1,100 +1,200 @@
-{ "temperature" : 23.1, "humidity" : 41, "pressure" : 97892, "sea_pressure" : 97891, "time" : 1504869255 }
-{ "temperature" : 23.1, "humidity" : 41, "pressure" : 97910, "sea_pressure" : 97910, "time" : 1504868952 }
-{ "temperature" : 23.1, "humidity" : 41, "pressure" : 97898, "sea_pressure" : 97916, "time" : 1504868649 }
-{ "temperature" : 23.1, "humidity" : 41, "pressure" : 97904, "sea_pressure" : 97904, "time" : 1504868347 }
-{ "temperature" : 23.2, "humidity" : 41, "pressure" : 97908, "sea_pressure" : 97917, "time" : 1504868044 }
-{ "temperature" : 23.2, "humidity" : 41, "pressure" : 97919, "sea_pressure" : 97917, "time" : 1504867741 }
-{ "temperature" : 23.2, "humidity" : 41, "pressure" : 97913, "sea_pressure" : 97924, "time" : 1504867438 }
-{ "temperature" : 23.2, "humidity" : 40, "pressure" : 97921, "sea_pressure" : 97921, "time" : 1504867136 }
-{ "temperature" : 23.2, "humidity" : 40, "pressure" : 97929, "sea_pressure" : 97927, "time" : 1504866833 }
-{ "temperature" : 23.2, "humidity" : 41, "pressure" : 97920, "sea_pressure" : 97927, "time" : 1504866530 }
-{ "temperature" : 23.2, "humidity" : 40, "pressure" : 97923, "sea_pressure" : 97928, "time" : 1504866228 }
-{ "temperature" : 23.3, "humidity" : 41, "pressure" : 97936, "sea_pressure" : 97934, "time" : 1504865925 }
-{ "temperature" : 23.3, "humidity" : 41, "pressure" : 97944, "sea_pressure" : 97941, "time" : 1504865622 }
-{ "temperature" : 23.3, "humidity" : 41, "pressure" : 97938, "sea_pressure" : 97940, "time" : 1504865319 }
-{ "temperature" : 23.3, "humidity" : 41, "pressure" : 97953, "sea_pressure" : 97954, "time" : 1504865017 }
-{ "temperature" : 23.3, "humidity" : 41, "pressure" : 97956, "sea_pressure" : 97962, "time" : 1504864714 }
-{ "temperature" : 23.4, "humidity" : 41, "pressure" : 97966, "sea_pressure" : 97965, "time" : 1504864411 }
-{ "temperature" : 23.4, "humidity" : 41, "pressure" : 97978, "sea_pressure" : 97981, "time" : 1504864108 }
-{ "temperature" : 23.4, "humidity" : 41, "pressure" : 97994, "sea_pressure" : 97993, "time" : 1504863806 }
-{ "temperature" : 23.4, "humidity" : 41, "pressure" : 97991, "sea_pressure" : 97993, "time" : 1504863503 }
-{ "temperature" : 23.5, "humidity" : 41, "pressure" : 98010, "sea_pressure" : 98013, "time" : 1504863200 }
-{ "temperature" : 23.5, "humidity" : 41, "pressure" : 98007, "sea_pressure" : 98013, "time" : 1504862898 }
-{ "temperature" : 23.5, "humidity" : 40, "pressure" : 98005, "sea_pressure" : 98005, "time" : 1504862595 }
-{ "temperature" : 23.5, "humidity" : 41, "pressure" : 98005, "sea_pressure" : 98007, "time" : 1504862292 }
-{ "temperature" : 23.6, "humidity" : 41, "pressure" : 98025, "sea_pressure" : 98018, "time" : 1504861989 }
-{ "temperature" : 23.6, "humidity" : 41, "pressure" : 98025, "sea_pressure" : 98035, "time" : 1504861687 }
-{ "temperature" : 23.6, "humidity" : 41, "pressure" : 98028, "sea_pressure" : 98032, "time" : 1504861384 }
-{ "temperature" : 23.6, "humidity" : 40, "pressure" : 98029, "sea_pressure" : 98035, "time" : 1504861081 }
-{ "temperature" : 23.6, "humidity" : 40, "pressure" : 98050, "sea_pressure" : 98052, "time" : 1504860779 }
-{ "temperature" : 23.6, "humidity" : 41, "pressure" : 98057, "sea_pressure" : 98057, "time" : 1504860476 }
-{ "temperature" : 23.7, "humidity" : 41, "pressure" : 98051, "sea_pressure" : 98057, "time" : 1504860173 }
-{ "temperature" : 23.7, "humidity" : 41, "pressure" : 98057, "sea_pressure" : 98058, "time" : 1504859870 }
-{ "temperature" : 23.7, "humidity" : 41, "pressure" : 98065, "sea_pressure" : 98071, "time" : 1504859568 }
-{ "temperature" : 23.7, "humidity" : 40, "pressure" : 98077, "sea_pressure" : 98073, "time" : 1504859265 }
-{ "temperature" : 23.7, "humidity" : 41, "pressure" : 98084, "sea_pressure" : 98083, "time" : 1504858962 }
-{ "temperature" : 23.7, "humidity" : 41, "pressure" : 98083, "sea_pressure" : 98073, "time" : 1504858659 }
-{ "temperature" : 23.7, "humidity" : 40, "pressure" : 98074, "sea_pressure" : 98073, "time" : 1504858357 }
-{ "temperature" : 23.8, "humidity" : 40, "pressure" : 98071, "sea_pressure" : 98083, "time" : 1504858054 }
-{ "temperature" : 23.8, "humidity" : 40, "pressure" : 98080, "sea_pressure" : 98083, "time" : 1504857751 }
-{ "temperature" : 23.8, "humidity" : 40, "pressure" : 98072, "sea_pressure" : 98072, "time" : 1504857449 }
-{ "temperature" : 23.8, "humidity" : 40, "pressure" : 98074, "sea_pressure" : 98071, "time" : 1504857146 }
-{ "temperature" : 23.8, "humidity" : 40, "pressure" : 98074, "sea_pressure" : 98075, "time" : 1504856843 }
-{ "temperature" : 23.8, "humidity" : 39, "pressure" : 98075, "sea_pressure" : 98075, "time" : 1504856540 }
-{ "temperature" : 23.9, "humidity" : 40, "pressure" : 98068, "sea_pressure" : 98076, "time" : 1504856238 }
-{ "temperature" : 23.7, "humidity" : 40, "pressure" : 98075, "sea_pressure" : 98071, "time" : 1504855935 }
-{ "temperature" : 23.7, "humidity" : 40, "pressure" : 98074, "sea_pressure" : 98074, "time" : 1504855632 }
-{ "temperature" : 23.7, "humidity" : 40, "pressure" : 98089, "sea_pressure" : 98081, "time" : 1504855330 }
-{ "temperature" : 23.7, "humidity" : 40, "pressure" : 98076, "sea_pressure" : 98077, "time" : 1504855027 }
-{ "temperature" : 23.7, "humidity" : 40, "pressure" : 98067, "sea_pressure" : 98065, "time" : 1504854724 }
-{ "temperature" : 23.7, "humidity" : 39, "pressure" : 98064, "sea_pressure" : 98067, "time" : 1504854421 }
-{ "temperature" : 23.7, "humidity" : 40, "pressure" : 98071, "sea_pressure" : 98071, "time" : 1504854119 }
-{ "temperature" : 23.7, "humidity" : 40, "pressure" : 98076, "sea_pressure" : 98078, "time" : 1504853816 }
-{ "temperature" : 23.7, "humidity" : 40, "pressure" : 98074, "sea_pressure" : 98078, "time" : 1504853513 }
-{ "temperature" : 23.8, "humidity" : 39, "pressure" : 98080, "sea_pressure" : 98084, "time" : 1504853211 }
-{ "temperature" : 23.8, "humidity" : 39, "pressure" : 98074, "sea_pressure" : 98085, "time" : 1504852908 }
-{ "temperature" : 23.8, "humidity" : 39, "pressure" : 98075, "sea_pressure" : 98075, "time" : 1504852605 }
-{ "temperature" : 23.7, "humidity" : 40, "pressure" : 98073, "sea_pressure" : 98070, "time" : 1504852302 }
-{ "temperature" : 23.5, "humidity" : 40, "pressure" : 98085, "sea_pressure" : 98088, "time" : 1504852000 }
-{ "temperature" : 23.4, "humidity" : 41, "pressure" : 98090, "sea_pressure" : 98096, "time" : 1504851697 }
-{ "temperature" : 23.4, "humidity" : 41, "pressure" : 98093, "sea_pressure" : 98095, "time" : 1504851394 }
-{ "temperature" : 23.3, "humidity" : 41, "pressure" : 98090, "sea_pressure" : 98093, "time" : 1504851092 }
-{ "temperature" : 23.3, "humidity" : 41, "pressure" : 98104, "sea_pressure" : 98096, "time" : 1504850789 }
-{ "temperature" : 23.2, "humidity" : 41, "pressure" : 98100, "sea_pressure" : 98111, "time" : 1504850486 }
-{ "temperature" : 23.1, "humidity" : 41, "pressure" : 98091, "sea_pressure" : 98094, "time" : 1504850183 }
-{ "temperature" : 23.1, "humidity" : 41, "pressure" : 98078, "sea_pressure" : 98089, "time" : 1504849881 }
-{ "temperature" : 23.0, "humidity" : 41, "pressure" : 98086, "sea_pressure" : 98086, "time" : 1504849578 }
-{ "temperature" : 23.0, "humidity" : 41, "pressure" : 98086, "sea_pressure" : 98086, "time" : 1504849275 }
-{ "temperature" : 22.9, "humidity" : 41, "pressure" : 98076, "sea_pressure" : 98079, "time" : 1504848973 }
-{ "temperature" : 22.8, "humidity" : 41, "pressure" : 98067, "sea_pressure" : 98078, "time" : 1504848670 }
-{ "temperature" : 22.8, "humidity" : 41, "pressure" : 98069, "sea_pressure" : 98068, "time" : 1504848367 }
-{ "temperature" : 22.7, "humidity" : 42, "pressure" : 98062, "sea_pressure" : 98056, "time" : 1504848064 }
-{ "temperature" : 22.7, "humidity" : 42, "pressure" : 98052, "sea_pressure" : 98055, "time" : 1504847762 }
-{ "temperature" : 22.6, "humidity" : 42, "pressure" : 98054, "sea_pressure" : 98054, "time" : 1504847459 }
-{ "temperature" : 22.6, "humidity" : 42, "pressure" : 98045, "sea_pressure" : 98052, "time" : 1504847156 }
-{ "temperature" : 22.6, "humidity" : 42, "pressure" : 98046, "sea_pressure" : 98052, "time" : 1504846854 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98039, "sea_pressure" : 98050, "time" : 1504846551 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98042, "sea_pressure" : 98056, "time" : 1504846248 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98042, "sea_pressure" : 98044, "time" : 1504845945 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98054, "sea_pressure" : 98051, "time" : 1504845643 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98056, "sea_pressure" : 98060, "time" : 1504845340 }
-{ "temperature" : 22.4, "humidity" : 42, "pressure" : 98062, "sea_pressure" : 98062, "time" : 1504845037 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98075, "sea_pressure" : 98066, "time" : 1504844734 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98078, "sea_pressure" : 98069, "time" : 1504844432 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98076, "sea_pressure" : 98079, "time" : 1504844129 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98078, "sea_pressure" : 98085, "time" : 1504843826 }
-{ "temperature" : 22.5, "humidity" : 43, "pressure" : 98088, "sea_pressure" : 98078, "time" : 1504843524 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98082, "sea_pressure" : 98086, "time" : 1504843221 }
-{ "temperature" : 22.5, "humidity" : 43, "pressure" : 98085, "sea_pressure" : 98092, "time" : 1504842918 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98103, "sea_pressure" : 98095, "time" : 1504842616 }
-{ "temperature" : 22.5, "humidity" : 43, "pressure" : 98104, "sea_pressure" : 98103, "time" : 1504842313 }
-{ "temperature" : 22.5, "humidity" : 43, "pressure" : 98113, "sea_pressure" : 98113, "time" : 1504842010 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98110, "sea_pressure" : 98113, "time" : 1504841707 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98108, "sea_pressure" : 98104, "time" : 1504841405 }
-{ "temperature" : 22.5, "humidity" : 42, "pressure" : 98108, "sea_pressure" : 98108, "time" : 1504841102 }
-{ "temperature" : 22.5, "humidity" : 43, "pressure" : 98108, "sea_pressure" : 98114, "time" : 1504840799 }
-{ "temperature" : 22.5, "humidity" : 43, "pressure" : 98114, "sea_pressure" : 98114, "time" : 1504840497 }
-{ "temperature" : 22.5, "humidity" : 43, "pressure" : 98105, "sea_pressure" : 98107, "time" : 1504840194 }
-{ "temperature" : 22.5, "humidity" : 43, "pressure" : 98111, "sea_pressure" : 98117, "time" : 1504839891 }
-{ "temperature" : 22.5, "humidity" : 43, "pressure" : 98113, "sea_pressure" : 98110, "time" : 1504839588 }
-{ "temperature" : 22.5, "humidity" : 43, "pressure" : 98107, "sea_pressure" : 98107, "time" : 1504839286 }
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97292.0, "moisture": 965.0, "time": 1511972390.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97287.3, "moisture": 966.0, "time": 1511972355.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97292.3, "moisture": 958.0, "time": 1511972321.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97291.7, "moisture": 966.0, "time": 1511972286.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97291.7, "moisture": 970.0, "time": 1511972252.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97293.3, "moisture": 965.7, "time": 1511972217.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97291.3, "moisture": 964.0, "time": 1511972183.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97293.3, "moisture": 959.0, "time": 1511972148.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97291.7, "moisture": 960.7, "time": 1511972114.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97292.7, "moisture": 963.0, "time": 1511972079.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97292.3, "moisture": 964.7, "time": 1511972045.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97291.3, "moisture": 965.7, "time": 1511972010.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97291.7, "moisture": 966.0, "time": 1511971976.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97287.3, "moisture": 963.0, "time": 1511971941.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97284.0, "moisture": 960.0, "time": 1511971907.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97290.7, "moisture": 956.0, "time": 1511971872.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97293.0, "moisture": 960.3, "time": 1511971838.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97285.0, "moisture": 952.3, "time": 1511971803.0}
+{"temperature": 23.4, "light": 9.0, "humidity": 17.0, "pressure": 97286.3, "moisture": 965.3, "time": 1511971769.0}
+{"temperature": 23.4, "light": 9.0, "humidity": 17.0, "pressure": 97280.3, "moisture": 966.0, "time": 1511971734.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97283.3, "moisture": 966.0, "time": 1511971700.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97289.7, "moisture": 968.7, "time": 1511971666.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97284.7, "moisture": 966.0, "time": 1511971631.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97286.0, "moisture": 965.7, "time": 1511971597.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97286.7, "moisture": 967.0, "time": 1511971562.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97291.0, "moisture": 960.0, "time": 1511971528.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97289.3, "moisture": 958.7, "time": 1511971493.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97289.3, "moisture": 961.0, "time": 1511971459.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97288.7, "moisture": 967.0, "time": 1511971424.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97287.0, "moisture": 959.0, "time": 1511971390.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97286.7, "moisture": 964.7, "time": 1511971355.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97284.0, "moisture": 958.0, "time": 1511971321.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97287.0, "moisture": 965.0, "time": 1511971286.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97287.3, "moisture": 961.0, "time": 1511971252.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97279.0, "moisture": 967.3, "time": 1511971217.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97286.7, "moisture": 963.0, "time": 1511971183.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97283.7, "moisture": 969.0, "time": 1511971148.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97285.0, "moisture": 965.7, "time": 1511971114.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97283.7, "moisture": 963.0, "time": 1511971079.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97281.7, "moisture": 970.3, "time": 1511971045.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97280.7, "moisture": 971.0, "time": 1511971010.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97283.3, "moisture": 965.3, "time": 1511970976.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97281.3, "moisture": 962.7, "time": 1511970941.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97284.3, "moisture": 967.0, "time": 1511970907.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97283.0, "moisture": 970.7, "time": 1511970872.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97281.7, "moisture": 967.3, "time": 1511970838.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97281.7, "moisture": 966.0, "time": 1511970803.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97286.0, "moisture": 967.7, "time": 1511970769.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97288.3, "moisture": 971.0, "time": 1511970734.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97282.3, "moisture": 977.0, "time": 1511970700.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97281.0, "moisture": 970.7, "time": 1511970665.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97283.7, "moisture": 970.0, "time": 1511970631.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97281.7, "moisture": 969.0, "time": 1511970596.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97277.0, "moisture": 965.3, "time": 1511970562.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97281.3, "moisture": 972.0, "time": 1511970527.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97277.3, "moisture": 967.7, "time": 1511970493.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97273.0, "moisture": 970.7, "time": 1511970458.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97273.3, "moisture": 965.7, "time": 1511970424.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97277.7, "moisture": 971.0, "time": 1511970389.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97277.0, "moisture": 971.7, "time": 1511970355.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97275.0, "moisture": 970.7, "time": 1511970320.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97270.0, "moisture": 972.0, "time": 1511970286.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97270.7, "moisture": 970.3, "time": 1511970251.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97266.0, "moisture": 963.3, "time": 1511970217.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97272.7, "moisture": 970.0, "time": 1511970182.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97270.0, "moisture": 968.7, "time": 1511970148.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97268.3, "moisture": 968.7, "time": 1511970113.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97271.0, "moisture": 972.0, "time": 1511970079.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97266.7, "moisture": 971.0, "time": 1511970044.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97268.0, "moisture": 970.0, "time": 1511970010.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97268.3, "moisture": 957.7, "time": 1511969975.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97270.3, "moisture": 970.0, "time": 1511969941.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97267.3, "moisture": 966.7, "time": 1511969906.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97268.7, "moisture": 964.7, "time": 1511969872.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97271.3, "moisture": 967.0, "time": 1511969837.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97270.0, "moisture": 967.0, "time": 1511969803.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97270.3, "moisture": 963.0, "time": 1511969768.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97270.7, "moisture": 962.3, "time": 1511969734.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97270.7, "moisture": 962.7, "time": 1511969699.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97272.0, "moisture": 964.3, "time": 1511969665.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97274.3, "moisture": 961.7, "time": 1511969630.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97276.0, "moisture": 962.3, "time": 1511969596.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97276.3, "moisture": 964.3, "time": 1511969561.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97272.3, "moisture": 966.0, "time": 1511969527.0}
+{"temperature": 23.4, "light": 9.0, "humidity": 17.0, "pressure": 97273.7, "moisture": 966.0, "time": 1511969492.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97277.3, "moisture": 968.7, "time": 1511969458.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97270.3, "moisture": 969.0, "time": 1511969423.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97278.0, "moisture": 963.3, "time": 1511969389.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97274.0, "moisture": 960.7, "time": 1511969354.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97268.3, "moisture": 966.3, "time": 1511969320.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97273.7, "moisture": 955.7, "time": 1511969285.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97275.7, "moisture": 965.3, "time": 1511969251.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97270.0, "moisture": 961.3, "time": 1511969216.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97279.0, "moisture": 969.0, "time": 1511969182.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97267.7, "moisture": 968.0, "time": 1511969147.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97269.3, "moisture": 962.0, "time": 1511969113.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97270.0, "moisture": 966.3, "time": 1511969078.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97266.3, "moisture": 963.7, "time": 1511969044.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97270.3, "moisture": 968.0, "time": 1511969009.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97265.7, "moisture": 971.3, "time": 1511968975.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97271.3, "moisture": 971.0, "time": 1511968940.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97272.3, "moisture": 966.0, "time": 1511968906.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97266.3, "moisture": 966.0, "time": 1511968871.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97274.7, "moisture": 963.0, "time": 1511968837.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97267.7, "moisture": 963.7, "time": 1511968802.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97271.0, "moisture": 969.0, "time": 1511968768.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97266.7, "moisture": 970.7, "time": 1511968733.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97267.3, "moisture": 964.7, "time": 1511968699.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97270.7, "moisture": 966.0, "time": 1511968664.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97264.0, "moisture": 965.7, "time": 1511968630.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97273.7, "moisture": 970.0, "time": 1511968595.0}
+{"temperature": 23.2, "light": 9.0, "humidity": 17.0, "pressure": 97272.7, "moisture": 966.0, "time": 1511968561.0}
+{"temperature": 23.2, "light": 9.7, "humidity": 17.0, "pressure": 97277.7, "moisture": 966.0, "time": 1511968526.0}
+{"temperature": 23.3, "light": 9.0, "humidity": 17.0, "pressure": 97274.7, "moisture": 963.7, "time": 1511968492.0}
+{"temperature": 23.3, "light": 10.0, "humidity": 17.0, "pressure": 97271.3, "moisture": 970.7, "time": 1511968457.0}
+{"temperature": 23.2, "light": 10.0, "humidity": 17.0, "pressure": 97267.7, "moisture": 969.3, "time": 1511968423.0}
+{"temperature": 23.2, "light": 10.0, "humidity": 17.0, "pressure": 97272.0, "moisture": 967.7, "time": 1511968388.0}
+{"temperature": 23.3, "light": 10.0, "humidity": 17.0, "pressure": 97270.0, "moisture": 966.7, "time": 1511968354.0}
+{"temperature": 23.3, "light": 10.0, "humidity": 17.0, "pressure": 97273.0, "moisture": 962.7, "time": 1511968319.0}
+{"temperature": 23.3, "light": 10.0, "humidity": 17.0, "pressure": 97272.7, "moisture": 964.0, "time": 1511968285.0}
+{"temperature": 23.3, "light": 10.0, "humidity": 17.0, "pressure": 97276.3, "moisture": 964.0, "time": 1511968250.0}
+{"temperature": 23.3, "light": 10.0, "humidity": 17.0, "pressure": 97265.3, "moisture": 961.3, "time": 1511968216.0}
+{"temperature": 23.3, "light": 10.0, "humidity": 17.0, "pressure": 97270.0, "moisture": 968.7, "time": 1511968181.0}
+{"temperature": 23.3, "light": 10.0, "humidity": 17.0, "pressure": 97267.3, "moisture": 955.0, "time": 1511968147.0}
+{"temperature": 23.3, "light": 10.0, "humidity": 17.0, "pressure": 97268.3, "moisture": 968.0, "time": 1511968112.0}
+{"temperature": 23.3, "light": 10.3, "humidity": 17.0, "pressure": 97268.3, "moisture": 959.7, "time": 1511968078.0}
+{"temperature": 23.2, "light": 11.0, "humidity": 17.0, "pressure": 97275.3, "moisture": 966.3, "time": 1511968043.0}
+{"temperature": 23.3, "light": 11.0, "humidity": 17.0, "pressure": 97271.0, "moisture": 966.3, "time": 1511968009.0}
+{"temperature": 23.3, "light": 11.0, "humidity": 17.0, "pressure": 97267.7, "moisture": 971.7, "time": 1511967974.0}
+{"temperature": 23.3, "light": 11.0, "humidity": 17.0, "pressure": 97270.0, "moisture": 969.0, "time": 1511967940.0}
+{"temperature": 23.3, "light": 11.0, "humidity": 17.0, "pressure": 97270.0, "moisture": 968.0, "time": 1511967905.0}
+{"temperature": 23.2, "light": 11.0, "humidity": 17.0, "pressure": 97270.0, "moisture": 970.0, "time": 1511967871.0}
+{"temperature": 23.3, "light": 11.0, "humidity": 17.0, "pressure": 97269.3, "moisture": 971.7, "time": 1511967836.0}
+{"temperature": 23.3, "light": 12.0, "humidity": 17.0, "pressure": 97272.7, "moisture": 968.0, "time": 1511967802.0}
+{"temperature": 23.3, "light": 12.0, "humidity": 17.0, "pressure": 97269.7, "moisture": 963.7, "time": 1511967767.0}
+{"temperature": 23.3, "light": 12.0, "humidity": 17.0, "pressure": 97268.3, "moisture": 968.0, "time": 1511967733.0}
+{"temperature": 23.4, "light": 13.0, "humidity": 17.0, "pressure": 97267.0, "moisture": 972.3, "time": 1511967698.0}
+{"temperature": 23.4, "light": 13.0, "humidity": 17.0, "pressure": 97267.7, "moisture": 965.0, "time": 1511967664.0}
+{"temperature": 23.5, "light": 14.0, "humidity": 17.0, "pressure": 97272.7, "moisture": 972.7, "time": 1511967629.0}
+{"temperature": 23.4, "light": 14.0, "humidity": 17.0, "pressure": 97265.3, "moisture": 968.3, "time": 1511967595.0}
+{"temperature": 23.3, "light": 15.0, "humidity": 17.0, "pressure": 97269.3, "moisture": 971.0, "time": 1511967560.0}
+{"temperature": 23.3, "light": 15.0, "humidity": 17.0, "pressure": 97267.7, "moisture": 962.3, "time": 1511967526.0}
+{"temperature": 23.3, "light": 16.0, "humidity": 17.0, "pressure": 97266.3, "moisture": 967.0, "time": 1511967491.0}
+{"temperature": 23.3, "light": 16.0, "humidity": 17.0, "pressure": 97266.3, "moisture": 958.3, "time": 1511967457.0}
+{"temperature": 23.3, "light": 17.0, "humidity": 17.0, "pressure": 97264.7, "moisture": 962.0, "time": 1511967422.0}
+{"temperature": 23.3, "light": 17.0, "humidity": 17.0, "pressure": 97262.0, "moisture": 964.7, "time": 1511967388.0}
+{"temperature": 23.4, "light": 17.3, "humidity": 17.0, "pressure": 97265.3, "moisture": 965.3, "time": 1511967353.0}
+{"temperature": 23.4, "light": 17.7, "humidity": 17.0, "pressure": 97260.7, "moisture": 961.3, "time": 1511967319.0}
+{"temperature": 23.4, "light": 18.0, "humidity": 17.0, "pressure": 97267.0, "moisture": 962.0, "time": 1511967284.0}
+{"temperature": 23.3, "light": 20.0, "humidity": 17.0, "pressure": 97264.0, "moisture": 960.7, "time": 1511967250.0}
+{"temperature": 23.3, "light": 21.0, "humidity": 17.0, "pressure": 97263.3, "moisture": 967.0, "time": 1511967215.0}
+{"temperature": 23.4, "light": 21.0, "humidity": 17.0, "pressure": 97261.3, "moisture": 967.3, "time": 1511967181.0}
+{"temperature": 23.3, "light": 22.3, "humidity": 17.0, "pressure": 97266.0, "moisture": 960.3, "time": 1511967147.0}
+{"temperature": 23.4, "light": 22.7, "humidity": 17.0, "pressure": 97267.3, "moisture": 957.7, "time": 1511967112.0}
+{"temperature": 23.3, "light": 21.7, "humidity": 17.0, "pressure": 97268.3, "moisture": 960.0, "time": 1511967078.0}
+{"temperature": 23.4, "light": 21.0, "humidity": 17.0, "pressure": 97260.7, "moisture": 956.0, "time": 1511967043.0}
+{"temperature": 23.4, "light": 23.0, "humidity": 17.0, "pressure": 97272.0, "moisture": 963.3, "time": 1511967009.0}
+{"temperature": 23.4, "light": 23.3, "humidity": 17.0, "pressure": 97265.0, "moisture": 962.0, "time": 1511966974.0}
+{"temperature": 23.4, "light": 23.7, "humidity": 17.0, "pressure": 97266.0, "moisture": 960.0, "time": 1511966940.0}
+{"temperature": 23.4, "light": 23.0, "humidity": 17.0, "pressure": 97270.3, "moisture": 955.0, "time": 1511966905.0}
+{"temperature": 23.3, "light": 21.0, "humidity": 17.0, "pressure": 97268.7, "moisture": 958.3, "time": 1511966871.0}
+{"temperature": 23.3, "light": 21.0, "humidity": 17.0, "pressure": 97268.0, "moisture": 940.0, "time": 1511966836.0}
+{"temperature": 23.4, "light": 22.0, "humidity": 17.0, "pressure": 97269.3, "moisture": 954.0, "time": 1511966802.0}
+{"temperature": 23.3, "light": 23.0, "humidity": 17.0, "pressure": 97273.0, "moisture": 966.7, "time": 1511966767.0}
+{"temperature": 23.4, "light": 23.0, "humidity": 17.0, "pressure": 97270.0, "moisture": 964.7, "time": 1511966733.0}
+{"temperature": 23.4, "light": 24.0, "humidity": 17.0, "pressure": 97272.3, "moisture": 970.0, "time": 1511966698.0}
+{"temperature": 23.3, "light": 26.0, "humidity": 17.0, "pressure": 97267.7, "moisture": 965.7, "time": 1511966664.0}
+{"temperature": 23.4, "light": 26.0, "humidity": 17.0, "pressure": 97271.7, "moisture": 963.0, "time": 1511966629.0}
+{"temperature": 23.4, "light": 26.0, "humidity": 17.0, "pressure": 97266.7, "moisture": 965.0, "time": 1511966595.0}
+{"temperature": 23.3, "light": 25.0, "humidity": 17.0, "pressure": 97263.3, "moisture": 964.3, "time": 1511966560.0}
+{"temperature": 23.4, "light": 25.0, "humidity": 17.0, "pressure": 97268.7, "moisture": 967.0, "time": 1511966526.0}
+{"temperature": 23.3, "light": 26.0, "humidity": 17.0, "pressure": 97266.7, "moisture": 967.0, "time": 1511966491.0}
+{"temperature": 23.3, "light": 24.0, "humidity": 17.0, "pressure": 97266.3, "moisture": 964.0, "time": 1511966457.0}
+{"temperature": 23.3, "light": 22.0, "humidity": 17.0, "pressure": 97274.7, "moisture": 966.0, "time": 1511966422.0}
+{"temperature": 23.3, "light": 22.0, "humidity": 17.0, "pressure": 97274.0, "moisture": 968.0, "time": 1511966388.0}
+{"temperature": 23.4, "light": 23.0, "humidity": 17.0, "pressure": 97274.3, "moisture": 967.0, "time": 1511966353.0}
+{"temperature": 23.3, "light": 24.0, "humidity": 17.0, "pressure": 97276.7, "moisture": 962.3, "time": 1511966319.0}
+{"temperature": 23.4, "light": 25.0, "humidity": 17.0, "pressure": 97269.3, "moisture": 952.3, "time": 1511966284.0}
+{"temperature": 23.3, "light": 24.3, "humidity": 17.0, "pressure": 97281.7, "moisture": 954.3, "time": 1511966250.0}
+{"temperature": 23.4, "light": 23.3, "humidity": 17.0, "pressure": 97278.3, "moisture": 965.7, "time": 1511966215.0}
+{"temperature": 23.4, "light": 22.7, "humidity": 17.0, "pressure": 97283.7, "moisture": 965.0, "time": 1511966181.0}
+{"temperature": 23.4, "light": 22.0, "humidity": 17.0, "pressure": 97280.7, "moisture": 968.0, "time": 1511966146.0}
+{"temperature": 23.4, "light": 22.0, "humidity": 17.0, "pressure": 97284.0, "moisture": 957.0, "time": 1511966112.0}
+{"temperature": 23.4, "light": 22.3, "humidity": 17.0, "pressure": 97286.3, "moisture": 962.0, "time": 1511966077.0}
+{"temperature": 23.3, "light": 23.0, "humidity": 17.0, "pressure": 97287.0, "moisture": 957.3, "time": 1511966043.0}
+{"temperature": 23.3, "light": 24.0, "humidity": 17.0, "pressure": 97287.0, "moisture": 959.7, "time": 1511966008.0}
+{"temperature": 23.3, "light": 23.3, "humidity": 17.0, "pressure": 97281.0, "moisture": 963.0, "time": 1511965974.0}
+{"temperature": 23.3, "light": 23.0, "humidity": 17.0, "pressure": 97289.0, "moisture": 963.7, "time": 1511965939.0}
+{"temperature": 23.3, "light": 23.3, "humidity": 17.0, "pressure": 97292.0, "moisture": 968.0, "time": 1511965905.0}
+{"temperature": 23.3, "light": 24.0, "humidity": 17.0, "pressure": 97286.7, "moisture": 965.0, "time": 1511965870.0}
+{"temperature": 23.3, "light": 24.0, "humidity": 17.0, "pressure": 97290.7, "moisture": 962.3, "time": 1511965836.0}
+{"temperature": 23.4, "light": 24.0, "humidity": 17.0, "pressure": 97289.0, "moisture": 964.3, "time": 1511965801.0}
+{"temperature": 23.3, "light": 24.0, "humidity": 17.0, "pressure": 97288.3, "moisture": 971.0, "time": 1511965767.0}
+{"temperature": 23.3, "light": 25.0, "humidity": 17.0, "pressure": 97293.7, "moisture": 967.3, "time": 1511965732.0}
+{"temperature": 23.3, "light": 26.0, "humidity": 17.0, "pressure": 97292.3, "moisture": 972.7, "time": 1511965698.0}
+{"temperature": 23.3, "light": 27.0, "humidity": 17.0, "pressure": 97289.0, "moisture": 970.0, "time": 1511965663.0}
+{"temperature": 23.4, "light": 28.0, "humidity": 17.0, "pressure": 97290.3, "moisture": 966.0, "time": 1511965629.0}
+{"temperature": 23.2, "light": 29.0, "humidity": 17.0, "pressure": 97291.7, "moisture": 961.7, "time": 1511965594.0}
+{"temperature": 23.3, "light": 29.0, "humidity": 17.0, "pressure": 97289.0, "moisture": 966.0, "time": 1511965560.0}
+{"temperature": 23.4, "light": 29.0, "humidity": 17.0, "pressure": 97288.0, "moisture": 967.0, "time": 1511965525.0}
