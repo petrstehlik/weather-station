@@ -50,10 +50,10 @@ def store_record(timestamp, data):
             if float(data[thr["name"]]) < thr["value"]:
                 new_state = 0
                 break
-        log.info("Actuator %s state: %s new_state: %s" % (row["name"], row["active"], new_state))
-        if new_state != row["active"]:
+        log.info("Actuator %s state: %s new_state: %s" % (row["name"], row["state"], new_state))
+        if new_state != row["state"]:
             log.info("Sending message '%s': %s " % (MQTT_ACT_BASE + row["name"] + "/state", new_state))
-            publish.single(MQTT_ACT_BASE + row["name"] + "/state", str(new_state) + ";", hostname=HOST)
+            publish.single(MQTT_ACT_BASE + row["name"] + "/state", str(new_state), hostname=HOST)
 
 
     statement = "INSERT INTO {} (time, temperature, pressure, humidity, light, moisture) VALUES ("\
@@ -79,12 +79,12 @@ def actuator_on_message(client, userdata, message):
 
     actuator = topic[-1]
     timestamp = payload[0]
-    active = payload[1]
+    state = payload[1]
 
-    log.info("Actuator: %s, Timestamp: %s, Active: %s" % (actuator, timestamp, active))
+    log.info("Actuator: %s, Timestamp: %s, State: %s" % (actuator, timestamp, state))
 
     c = conn.cursor()
-    c.execute("UPDATE actuators SET timestamp = ?, active = ? WHERE name == ?", (timestamp, active, actuator))
+    c.execute("UPDATE actuators SET timestamp = ?, state = ? WHERE name == ?", (timestamp, state, actuator))
     conn.commit()
     c.close()
 
@@ -105,7 +105,7 @@ if __name__ == "__main__":
             "name TEXT UNIQUE NOT NULL, "\
             "type TEXT NOT NULL, "\
             "timestamp INTEGER NOT NULL, "\
-            "active INTEGER NOT NULL);")
+            "state INTEGER NOT NULL);")
     c.execute("CREATE TABLE IF NOT EXISTS thresholds ("\
             "id INTEGER PRIMARY KEY, "\
             "name TEXT NOT NULL, "\
@@ -115,7 +115,7 @@ if __name__ == "__main__":
     try:
         log = logging.getLogger("Register actuators")
 
-        s_act = "INSERT INTO actuators (name, type, timestamp, active) VALUES (?, ?, ?, ?)"
+        s_act = "INSERT INTO actuators (name, type, timestamp, state) VALUES (?, ?, ?, ?)"
         s_thr = "INSERT INTO thresholds (name, value, actuator_id) VALUES (?, ?, ?)"
 
         c.execute(s_act, ("conditioning", "conditioning", int(time.time()), 0))
