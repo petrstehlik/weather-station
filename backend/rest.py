@@ -181,7 +181,11 @@ def actuator(actuator_id):
             thr_id = int(rec["id"])
             val = float(rec["value"])
             c.execute("UPDATE thresholds SET value = ? WHERE id == ? AND actuator_id == ?", (val, thr_id, actuator_id))
-            conn.commit()
+            try:
+                conn.commit()
+            except OperationalError as e:
+                print(str(e))
+                conn.commit()
 
     c.execute("SELECT * FROM actuators WHERE id = ?", (actuator_id,))
     row = c.fetchone()

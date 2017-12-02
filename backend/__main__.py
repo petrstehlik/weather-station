@@ -61,7 +61,11 @@ def store_record(timestamp, data):
 
     c.execute(statement, (timestamp, data["temperature"], data["pressure"], data["humidity"], data["light"], data["moisture"]))
 
-    conn.commit()
+    try:
+        conn.commit()
+    except OperationalError as e:
+        print(str(e))
+        conn.commit()
     c.close()
 
 def actuator_on_message(client, userdata, message):
@@ -85,7 +89,11 @@ def actuator_on_message(client, userdata, message):
 
     c = conn.cursor()
     c.execute("UPDATE actuators SET timestamp = ?, state = ? WHERE name == ?", (timestamp, state, actuator))
-    conn.commit()
+    try:
+        conn.commit()
+    except OperationalError as e:
+        print(str(e))
+        conn.commit()
     c.close()
 
 if __name__ == "__main__":
@@ -139,7 +147,11 @@ if __name__ == "__main__":
         log.info("Registering plants_watering actuator")
     except sqlite3.IntegrityError:
         pass
-    conn.commit()
+    try:
+        conn.commit()
+    except OperationalError as e:
+        print(str(e))
+        conn.commit()
     c.close()
 
     holder = Holder("sensors", HOST, PORT, [MQTT_TEMP, MQTT_HUM, MQTT_PRES, MQTT_LIGHT, MQTT_MOISTURE])
