@@ -33,6 +33,10 @@ body {
         width: 100%;
         text-align: center;
         font-size: 1.2rem;
+
+        span.trend {
+            display: inline-block;
+        }
     }
 
     .big-num {
