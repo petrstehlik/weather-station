@@ -43,7 +43,7 @@ def store_record(timestamp, data):
 
     for row in rows:
         c.execute("SELECT * FROM thresholds WHERE actuator_id == {}".format(row["id"]))
-        data_vals = {k: val_correction(k,float(v)) for k, v in data.iteritems()}
+        data_vals = {k: val_correction(k, float(data[k])) for index, k in enumerate(data)}
         thrs = c.fetchall()
         new_state = 1
         for thr in thrs:
