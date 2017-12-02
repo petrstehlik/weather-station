@@ -3,7 +3,7 @@ Author: Petr Stehlik <xstehl14@stud.fit.vutbr.cz>
 Author: Matej Vido <xvidom00@stud.fit.vutbr.cz>
 """
 
-from flask import Flask
+from flask import Flask, request
 import logging
 import sqlite3
 import json
@@ -146,7 +146,7 @@ def actuators():
         rec["id"] = row["id"]
         rec["name"] = row["name"]
         rec["type"] = row["type"]
-        rec["last_timestamp"] = row["timestamp"]
+        rec["timestamp"] = row["timestamp"]
         if row["active"] == 0:
             rec["active"] = False
         else:
@@ -163,3 +163,39 @@ def actuators():
         result.append(rec)
 
     return json.dumps(result)
+
+@app.route("/actuator/<int:actuator_id>", methods=['POST'])
+def actuator(actuator_id):
+    data = request.get_json()
+    c = conn.cursor()
+
+    if data != None:
+        for rec in data:
+            thr_id = int(rec["id"])
+            val = float(rec["value"])
+            c.execute("UPDATE thresholds SET value = ? WHERE id == ? AND actuator_id == ?", (val, thr_id, actuator_id))
+            conn.commit()
+
+    c.execute("SELECT * FROM actuators WHERE id == {}".format(actuator_id))
+    row = c.fetchone()
+
+    rec = dict()
+    rec["id"] = row["id"]
+    rec["name"] = row["name"]
+    rec["type"] = row["type"]
+    rec["timestamp"] = row["timestamp"]
+    if row["active"] == 0:
+        rec["active"] = False
+    else:
+        rec["active"] = True
+    c.execute("SELECT * FROM thresholds WHERE actuator_id == {}".format(actuator_id))
+    thrs = c.fetchall()
+    rec["thresholds"] = []
+    for thr in thrs:
+        thr_dict = dict()
+        thr_dict["id"] = thr["id"]
+        thr_dict["name"] = thr["name"]
+        thr_dict["value"] = thr["value"]
+        rec["thresholds"].append(thr_dict)
+
+    return json.dumps(rec)
