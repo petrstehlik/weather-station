@@ -126,22 +126,22 @@ if __name__ == "__main__":
         s_act = "INSERT INTO actuators (name, type, timestamp, state) VALUES (?, ?, ?, ?)"
         s_thr = "INSERT INTO thresholds (name, value, actuator_id) VALUES (?, ?, ?)"
 
-        c.execute(s_act, ("conditioning", "conditioning", int(time.time()), 0))
+        c.execute(s_act, ("Conditioning", "conditioning", int(time.time()), 0))
         pkey = c.lastrowid
         c.execute(s_thr, ("temperature", 25.0, pkey))
         log.info("Registering conditioning actuator")
 
-        c.execute(s_act, ("heating", "heating", int(time.time()), 0))
+        c.execute(s_act, ("Heating", "heating", int(time.time()), 0))
         pkey = c.lastrowid
         c.execute(s_thr, ("temperature", 18.0, pkey))
         log.info("Registering heating actuator")
 
-        c.execute(s_act, ("blinds", "blinds", int(time.time()), 0))
+        c.execute(s_act, ("Blinds", "blinds", int(time.time()), 0))
         pkey = c.lastrowid
         c.execute(s_thr, ("light", 5.0, pkey))
         log.info("Registering blinds actuator")
 
-        c.execute(s_act, ("plants_watering", "plants_watering", int(time.time()), 0))
+        c.execute(s_act, ("Plant Watering", "plants_watering", int(time.time()), 0))
         pkey = c.lastrowid
         c.execute(s_thr, ("moisture", 0.5, pkey))
         log.info("Registering plants_watering actuator")
