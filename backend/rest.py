@@ -114,7 +114,6 @@ def latest():
         val = val_correction(i, res[0][i])
 
         result[i] = [res[0]['time'] * 1000, val, trends[i]]
-
     return(json.dumps(result))
 
 @app.route("/weather")
@@ -146,12 +145,13 @@ def actuators():
         rec["id"] = row["id"]
         rec["name"] = row["name"]
         rec["type"] = row["type"]
-        rec["timestamp"] = row["timestamp"]
+        # Set timestamp for javascript
+        rec["timestamp"] = row["timestamp"] * 1000
         if row["active"] == 0:
             rec["active"] = False
         else:
             rec["active"] = True
-        c.execute("SELECT * FROM thresholds WHERE actuator_id == {}".format(row["id"]))
+        c.execute("SELECT * FROM thresholds WHERE actuator_id = ?", (row["id"],))
         thrs = c.fetchall()
         rec["thresholds"] = []
         for thr in thrs:
@@ -176,7 +176,7 @@ def actuator(actuator_id):
             c.execute("UPDATE thresholds SET value = ? WHERE id == ? AND actuator_id == ?", (val, thr_id, actuator_id))
             conn.commit()
 
-    c.execute("SELECT * FROM actuators WHERE id == {}".format(actuator_id))
+    c.execute("SELECT * FROM actuators WHERE id = ?", (actuator_id,))
     row = c.fetchone()
 
     rec = dict()
@@ -188,7 +188,7 @@ def actuator(actuator_id):
         rec["active"] = False
     else:
         rec["active"] = True
-    c.execute("SELECT * FROM thresholds WHERE actuator_id == {}".format(actuator_id))
+    c.execute("SELECT * FROM thresholds WHERE actuator_id = ?", (actuator_id, ))
     thrs = c.fetchall()
     rec["thresholds"] = []
     for thr in thrs:

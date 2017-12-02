@@ -8,7 +8,10 @@
 
 <div class="cards">
     <div class="card" *ngFor="let c of categories" [ngClass]="c['metric']">
-        <h3>{{ c['title'] }}</h3>
+        <h3>{{ c['title'] }} <span class="trend" [ngStyle]="{
+                    'transform': 'rotate('+data[c['metric']]?.trend+'deg)',
+                    '-webkit-transform': 'rotate('+data[c['metric']]?.trend+'deg)'
+                    }">&#8605;</span></h3>
         <div class="big-num" *ngIf="!tempLoad">
             {{ data[c['metric']]['data'][data[c['metric']]['data'].length-1][1] | number : '1.0-1' }} {{ c['unit'] }}
         </div>

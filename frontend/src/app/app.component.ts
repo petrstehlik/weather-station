@@ -73,6 +73,8 @@ export class AppComponent implements OnInit {
                     for (let item of this.metrics) {
                         let newdata = this.data;
                         this.data[item]['data'].push([new Date(data[item][0]), data[item][1]]);
+                        this.data[item]['trend'] = data[item][2];
+                        console.log(data[item])
                         this.ref.markForCheck();
                         this.ref.detectChanges();
                     }
@@ -91,7 +93,8 @@ export class AppComponent implements OnInit {
 
             this.data[metric] = {
                 "labels" : [metric, 'Value'],
-                "data" : this.data[metric]
+                "data" : this.data[metric],
+                "trend" : 0
             }
         }
 
