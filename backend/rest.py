@@ -183,7 +183,7 @@ def actuator(actuator_id):
             c.execute("UPDATE thresholds SET value = ? WHERE id == ? AND actuator_id == ?", (val, thr_id, actuator_id))
             try:
                 conn.commit()
-            except OperationalError as e:
+            except sqlite3.OperationalError as e:
                 print(str(e))
                 conn.commit()
 

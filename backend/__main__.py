@@ -63,7 +63,7 @@ def store_record(timestamp, data):
 
     try:
         conn.commit()
-    except OperationalError as e:
+    except sqlite3.OperationalError as e:
         print(str(e))
         conn.commit()
     c.close()
@@ -91,7 +91,7 @@ def actuator_on_message(client, userdata, message):
     c.execute("UPDATE actuators SET timestamp = ?, state = ? WHERE name == ?", (timestamp, state, actuator))
     try:
         conn.commit()
-    except OperationalError as e:
+    except sqlite3.OperationalError as e:
         print(str(e))
         conn.commit()
     c.close()
@@ -149,7 +149,7 @@ if __name__ == "__main__":
         pass
     try:
         conn.commit()
-    except OperationalError as e:
+    except sqlite3.OperationalError as e:
         print(str(e))
         conn.commit()
     c.close()
