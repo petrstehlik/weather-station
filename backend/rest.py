@@ -132,3 +132,34 @@ def weather():
         print(str(r))
 
     return(json.dumps(forecast.json()), 500)
+
+@app.route("/actuators")
+def actuators():
+    c = conn.cursor()
+    c.execute("SELECT * FROM actuators")
+    rows = c.fetchall()
+
+    result = []
+
+    for row in rows:
+        rec = dict()
+        rec["id"] = row["id"]
+        rec["name"] = row["name"]
+        rec["type"] = row["type"]
+        rec["last_timestamp"] = row["timestamp"]
+        if row["active"] == 0:
+            rec["active"] = False
+        else:
+            rec["active"] = True
+        c.execute("SELECT * FROM thresholds WHERE actuator_id == {}".format(row["id"]))
+        thrs = c.fetchall()
+        rec["thresholds"] = []
+        for thr in thrs:
+            thr_dict = dict()
+            thr_dict["id"] = thr["id"]
+            thr_dict["name"] = thr["name"]
+            thr_dict["value"] = thr["value"]
+            rec["thresholds"].append(thr_dict)
+        result.append(rec)
+
+    return json.dumps(result)
