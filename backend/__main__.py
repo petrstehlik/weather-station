@@ -1,5 +1,12 @@
+#!/usr/bin/env python
+"""
+Author: Petr Stehlik <xstehl14@stud.fit.vutbr.cz>
+Author: Matej Vido <xvidom00@stud.fit.vutbr.cz>
+"""
+
 import logging
 import sqlite3
+import time
 
 from Holder import Holder
 from rest import app
@@ -9,7 +16,7 @@ MQTT_HUM = "home/ws/sensor/humidity"
 MQTT_PRES = "home/ws/sensor/pressure"
 MQTT_LIGHT = "home/ws/sensor/light"
 MQTT_MOISTURE = "home/ws/sensor/moisture"
-HOST = "10.0.0.32"
+HOST = "localhost"
 PORT = 1883
 
 conn = sqlite3.connect('db.sq3', check_same_thread=False)
@@ -42,6 +49,45 @@ if __name__ == "__main__":
             "light REAL NOT NULL,"\
             "moisture REAL NOT NULL,"\
             "humidity REAL NOT NULL);")
+    c.execute("CREATE TABLE IF NOT EXISTS actuators ("\
+            "id INTEGER PRIMARY KEY, "\
+            "name TEXT UNIQUE NOT NULL, "\
+            "type TEXT NOT NULL, "\
+            "timestamp INTEGER NOT NULL, "\
+            "active INTEGER NOT NULL);")
+    c.execute("CREATE TABLE IF NOT EXISTS thresholds ("\
+            "id INTEGER PRIMARY KEY, "\
+            "name TEXT NOT NULL, "\
+            "value REAL NOT NULL, "\
+            "actuator_id INTEGER NOT NULL, "\
+            "FOREIGN KEY(actuator_id) REFERENCES actuators(id));")
+    try:
+        log = logging.getLogger("Register actuators")
+
+        s_act = "INSERT INTO actuators (name, type, timestamp, active) VALUES (?, ?, ?, ?)"
+        s_thr = "INSERT INTO thresholds (name, value, actuator_id) VALUES (?, ?, ?)"
+
+        c.execute(s_act, ("conditioning", "conditioning", int(time.time()), 0))
+        pkey = c.lastrowid
+        c.execute(s_thr, ("conditioning_temperature", 25.0, pkey))
+        log.info("Registering conditioning actuator")
+
+        c.execute(s_act, ("heating", "heating", int(time.time()), 0))
+        pkey = c.lastrowid
+        c.execute(s_thr, ("heating_temperature", 25.0, pkey))
+        log.info("Registering heating actuator")
+
+        c.execute(s_act, ("blinds", "blinds", int(time.time()), 0))
+        pkey = c.lastrowid
+        c.execute(s_thr, ("blinds_light", 5.0, pkey))
+        log.info("Registering blinds actuator")
+
+        c.execute(s_act, ("plants_watering", "plants_watering", int(time.time()), 0))
+        pkey = c.lastrowid
+        c.execute(s_thr, ("plants_watering_moisture", 0.5, pkey))
+        log.info("Registering plants_watering actuator")
+    except sqlite3.IntegrityError:
+        pass
     conn.commit()
     c.close()
 
