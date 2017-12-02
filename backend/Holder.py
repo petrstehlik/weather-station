@@ -25,13 +25,15 @@ class Holder():
     finished = dict()
 
     def __init__(self,
+            log_name,
             mqtt_broker,
             mqtt_port,
-            mqtt_topics):
+            mqtt_topics,
+            on_message_callback = None):
         """
         drop_job_arrays The PBS hook sends job arrays where job ID is in format xxxxxxx[xxxx].io01
         """
-        self.log = logging.getLogger(__name__)
+        self.log = logging.getLogger(__name__ + " " + log_name)
 
         self.broker = mqtt_broker
         self.port = mqtt_port
@@ -44,7 +46,10 @@ class Holder():
 
         # Register methods for connection and message receiving
         self.client.on_connect = self.on_connect
-        self.client.on_message = self.on_message
+        if on_message_callback == None:
+            self.client.on_message = self.on_message
+        else:
+            self.client.on_message = on_message_callback
 
         self.on_receive = self.default_on_receive
 
