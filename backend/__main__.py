@@ -47,7 +47,7 @@ def store_record(timestamp, data):
         thrs = c.fetchall()
         new_state = 1
         for thr in thrs:
-            if float(data[thr["name"]]) < thr["value"]:
+            if data_vals[thr["name"]] < thr["value"]:
                 new_state = 0
                 break
         log.info("Actuator %s state: %s new_state: %s" % (row["name"], row["state"], new_state))
