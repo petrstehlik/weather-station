@@ -147,10 +147,17 @@ def actuators():
         rec["type"] = row["type"]
         # Set timestamp for javascript
         rec["timestamp"] = row["timestamp"] * 1000
-        if row["active"] == 0:
+        if row["state"] == 0:
             rec["active"] = False
         else:
             rec["active"] = True
+        if rec["name"] == "heating" or rec["name"] == "plants_watering":
+            """
+            For heating and plants_watering, the state from database is opposite to its activity.
+            If the state is 0 (the value is lower than threshold), heating and plant_watering actuators
+            are active.
+            """
+            rec["active"] = not rec["active"]
         c.execute("SELECT * FROM thresholds WHERE actuator_id = ?", (row["id"],))
         thrs = c.fetchall()
         rec["thresholds"] = []
@@ -174,7 +181,11 @@ def actuator(actuator_id):
             thr_id = int(rec["id"])
             val = float(rec["value"])
             c.execute("UPDATE thresholds SET value = ? WHERE id == ? AND actuator_id == ?", (val, thr_id, actuator_id))
-            conn.commit()
+            try:
+                conn.commit()
+            except sqlite3.OperationalError as e:
+                print(str(e))
+                conn.commit()
 
     c.execute("SELECT * FROM actuators WHERE id = ?", (actuator_id,))
     row = c.fetchone()
@@ -183,11 +194,19 @@ def actuator(actuator_id):
     rec["id"] = row["id"]
     rec["name"] = row["name"]
     rec["type"] = row["type"]
-    rec["timestamp"] = row["timestamp"]
-    if row["active"] == 0:
+    # Set timestamp for javascript
+    rec["timestamp"] = row["timestamp"] * 1000
+    if row["state"] == 0:
         rec["active"] = False
     else:
         rec["active"] = True
+    if rec["name"] == "heating" or rec["name"] == "plants_watering":
+        """
+        For heating and plants_watering, the state from database is opposite to its activity.
+        If the state is 0 (the value is lower than threshold), heating and plant_watering actuators
+        are active.
+        """
+        rec["active"] = not rec["active"]
     c.execute("SELECT * FROM thresholds WHERE actuator_id = ?", (actuator_id, ))
     thrs = c.fetchall()
     rec["thresholds"] = []

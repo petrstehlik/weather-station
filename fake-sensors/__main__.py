@@ -41,10 +41,15 @@ while True:
             ts = int(time.time())
 
             log.debug("Sending MQTT messages")
+            log.debug("Sending message '%s': [%s] %s " % (MQTT_TEMP, ts, data["temperature"]))
             publish.single(MQTT_TEMP,"{0};{1}".format(ts, data["temperature"]), hostname=HOST)
+            log.debug("Sending message '%s': [%s] %s " % (MQTT_HUM, ts, data["humidity"]))
             publish.single(MQTT_HUM,"{0};{1}".format(ts, data["humidity"]), hostname=HOST)
+            log.debug("Sending message '%s': [%s] %s " % (MQTT_PRES, ts, data["pressure"]))
             publish.single(MQTT_PRES,"{0};{1}".format(ts, data["pressure"]), hostname=HOST)
+            log.debug("Sending message '%s': [%s] %s " % (MQTT_LIGHT, ts, data["light"]))
             publish.single(MQTT_LIGHT,"{0};{1}".format(ts, data["light"]), hostname=HOST)
+            log.debug("Sending message '%s': [%s] %s " % (MQTT_MOISTURE, ts, data["moisture"]))
             publish.single(MQTT_MOISTURE,"{0};{1}".format(ts, data["moisture"]), hostname=HOST)
 
             time.sleep(delay)
