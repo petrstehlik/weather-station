@@ -40,45 +40,36 @@ GUI zobrazuje aktuální a historické naměřené hodnoty jednotlivých senzor�
 Na trhu je velké množství dostupných nástrojů pro monitoring a řízení a to i na poli chytrých domácností. Je zde mnoho komerčních a uzavřených systémů pro automatizaci domácnosti. V současnosti nejznámější a pravděpodobně i nejrozšířenější je Apple Home\footnote{\url{https://www.apple.com/lae/ios/home/}}, který využívá protokolu Homekit také od společnosti Apple. Na trhu existuje pro Apple Home velké množství produktů a neustále se jejich počet zvyšuje. Existuje ale i mnoho open-source nástrojů pro řízení domácnosti. Jejich nejrozšířenější zastupitele jsou zde v krátkosti popsány.
 
 \subsection{Grafana}
-Grafana\footnote{\url{https://grafana.com/}} je vizualizační a analytický nástroj pro data zachycená v čase. Grafana samotná není primárně určena pro monitoring a řízení chytrých domácností, ale je natolik upravitelná, že existují konfigurace, které toto užití zpřístupňují. Je dostupná s mnoha rozšířeními a zdroji dat. Uživatel si vytvoří dashboard, který si následně nakonfiguruje a seskládá z dostupných modulů. Tyto moduly mimo dalších funkcionalit umožňují zobrazit čárový graf, jednotlivé hodnoty, trendy hodnot a s pomocí modulů i různé přepínače.
+Grafana (\url{https://grafana.com/}) je vizualizační a analytický nástroj pro data zachycená v čase. Grafana samotná není primárně určena pro monitoring a řízení chytrých domácností, ale je natolik upravitelná, že existují konfigurace, které toto užití zpřístupňují. Je dostupná s mnoha rozšířeními a zdroji dat. Uživatel si vytvoří dashboard, který si následně nakonfiguruje a seskládá z dostupných modulů. Tyto moduly mimo dalších funkcionalit umožňují zobrazit čárový graf, jednotlivé hodnoty, trendy hodnot a s pomocí modulů i různé přepínače.
 
 \subsection{Domoticz}
-Domoticz\footnote{\url{https://domoticz.com/}} je kompletním open-source systémem pro domácí automatizaci. Tento nástroj dovoluje monitorovat, řídit a konfigurovat mnoho různých zařízení od různých výrobců. Disponuje i automatickým učením senzorů a aktuátorů. Rozhraní pro uživatele je vytvořeno jako webová stránka dostupná na stroji s lokální instalací Domoticz.
+Domoticz (\url{https://domoticz.com/}) je kompletním open-source systémem pro domácí automatizaci. Tento nástroj dovoluje monitorovat, řídit a konfigurovat mnoho různých zařízení od různých výrobců. Disponuje i automatickým učením senzorů a aktuátorů. Rozhraní pro uživatele je vytvořeno jako webová stránka dostupná na stroji s lokální instalací Domoticz.
 
 \subsection{OpenHAB}
-OpenHAB\footnote{\url{https://www.openhab.org/}} je dalším velmi známým zástupcem open-source nástrojem pro domácí automatizaci. Podporuje velké množství platforem, výrobců a zařízení. Dokáže integrovat mnoho systémů do jednoho centrálního řešení, které lze ovládat mobilní aplikací, webových rozhraním nebo nativní desktopovou aplikací. Pro automatizaci disponuje rozsáhlým systémem pro tvorbu komplexních pravidel.
+OpenHAB (\url{https://www.openhab.org/}) je dalším velmi známým zástupcem open-source nástrojem pro domácí automatizaci. Podporuje velké množství platforem, výrobců a zařízení. Dokáže integrovat mnoho systémů do jednoho centrálního řešení, které lze ovládat mobilní aplikací, webových rozhraním nebo nativní desktopovou aplikací. Pro automatizaci disponuje rozsáhlým systémem pro tvorbu komplexních pravidel.
 
 \subsection{Home Assistant}
-Home Assistant\footnote{\url{https://home-assistant.io/}} je primárně navrhován pro užívání na Raspberry Pi. Jako předchozí nástroje také podporuje široké množství výrobců a zařízení. Také disponuje konfigurovatelným webových rozhraním s přehledy zařízení a kontrolou aktuátorů.
+Home Assistant (\url{https://home-assistant.io/}) je primárně navrhován pro užívání na Raspberry Pi. Jako předchozí nástroje také podporuje široké množství výrobců a zařízení. Také disponuje konfigurovatelným webových rozhraním s přehledy zařízení a kontrolou aktuátorů.
 
 \subsection{BeeeOn}
-BeeeOn\footnote{\url{https://beeeon.org/wiki/Main\_Page}} je systém pro domácí automatizaci vyvíjený na FIT VUT v Brně. Tento systém je primárně vyvíjen jako bezpečná domácí brána pro různé IoT zařízení. Oproti předchozím systémům je nutno pro plnou funkcionalitu systému vlastnit domácí bránu, kterou lze propojit s několika výrobci a jejich zařízeními. BeeeOn disponuje Android mobilní aplikací pro ovládání domácnosti a prototypem webového rozhraní.
+BeeeOn (\url{https://beeeon.org/}) je systém pro domácí automatizaci vyvíjený na FIT VUT v Brně. Tento systém je primárně vyvíjen jako bezpečná domácí brána pro různé IoT zařízení. Oproti předchozím systémům je nutno pro plnou funkcionalitu systému vlastnit domácí bránu, kterou lze propojit s několika výrobci a jejich zařízeními. BeeeOn disponuje Android mobilní aplikací pro ovládání domácnosti a prototypem webového rozhraní.
 
 \subsection{Vlastní řešení}
-%TODO do cestiny
-Okrem uvedených kompletných riešení pre monitoring a analýzu riadiachich systémov je možné poskladať vlastné riešenie
-z dostupných open-source knižníc, frameworkov a nástrojov.
+Kromě uvedených kompletních řešení pro monitoring a analýzu řídících systémů lze vytvořit vlastní řešení z dostupných open-source knihoven, frameworků a nástrojů. Toto řešení jsme ve finále zvolili vzhledem k náročnosti instalace a konfigurace ostatních systémů. Pro naše řešení jsme zvolili kombinaci Angular pro klientskou část webové aplikace a Flask (Python) s SQLite3 pro backend. Pro distribuci zpráv od senzorů k serveru a mezi aktuátory a serverem MQTT broker Mosquitto.
 
-Rozšíreným frameworkom pre tvorbu klientskej časti webových aplikácií je Angular\footnote{\url{https://angular.io/}}.
-Angular napísaný v jazyku TypeScript umožňuje jednoduchú integráciu rôznych knižníc pre zobrazovanie grafov a tvorbu dashboardov.
+Rozšířeným frameworkem pro tvorbu klientské části webových aplikací je Angular\footnote{\url{https://angular.io/}}. Angular umožňuje snadnou integraci různých knihoven pro zobrazování grafů a tvorbu interaktivních single-page aplikací (SPA).
 
-K implementácii serverovej časti webovej aplikácie je možné použiť framework Flask\footnote{\url{http://flask.pocoo.org/}} v jazyku Python.
-Flask umožňuje rýchlu a jednoduchú tvorbu REST API na prepojenie serverovej a klientskej časti webovej aplikácie.
-Výhodou použitia jazyku Python pre tvorbu serverovej časti aplikácie je, že obsahuje moduly pre obsluhu databázového systému
-a zabezpečenie sieťovej komunikácie s ďalšími prvkami celého riadiaceho systému.
+K implementaci serverové části webové aplikace je možné použít framework Flask\footnote{\url{http://flask.pocoo.org/}} napsaný v jazyce Python. Flask umožňuje rychlou a snadnou tvorbu REST API na propojení serverové a klientské části webové aplikace. Výhodou použití jazyku Python pro tvorbu serverové části aplikace je, že obsahuje moduly pro obsluhu databázového systému a zprotředkování síťové komunikace s dalšími prvky celého řídícího systému.
 
-Mosquitto\footnote{\url{https://mosquitto.org/}} je voľne dostupný broker pre MQTT protokol používaný v prostredí systémov IoT podporujúci rôzne platformy.
+Mosquitto\footnote{\url{https://mosquitto.org/}} je volně dostupný broker pro MQTT protokol používaný v prostředí systémů IoT podporující různé platformy.
 
 \section{Architektura a implementace}
 %TODO do cestiny
-V tejto sekcii je popísaná architektúra a implementácia vytvorenej meteostanice s autonómnym riadením.
-Meteostanica obsahuje reálne senzory, z ktorých sú dáta prenášané na server.
-Server dáta ukladá do databázy, riadi činnosť aktuátorov podľa pravidiel, ktoré sú taktiež uložené v databáze,
-a obsluhuje webovú aplikáciu, ktorá poskytuje grafické užívateľské rozhranie k celému systému.
-Činnosť aktuátorov je simulovaná.
-Pre účely testovania bol taktiež zostrojený modul pre simulovanie činnosti senzorov.
-V časti~\ref{subsec:hw} je popísaný hardware a spôsob jeho zapojenia.
-V nasledujúcej časti~\ref{subsec:sw} je popísaná implementácia softwareových modulov systému.
+Meteostanice obsahuje reálné senzory, z nichž jsou data přenášena na server. Server data ukládá do databáze, řídí činnost aktuátorů podle pravidel, které jsou také uloženy v databázi a obsluhuje webovou aplikaci, která poskytuje grafické uživatelské rozhraní k celému systému.
+
+Činnost aktuátorů je simulována a pro účely testování byl také sestrojen modul pro simulování činnosti senzorů.
+
+V části~\ref{subsec:hw} je popsán hardware a způsob jeho zapojení. V následující části~\ref{subsec:sw} je popsána implementace softwarových modulů systému.
 
 \subsection{Hardware}\label{subsec:hw}
 Základem pro hardware byly zvoleny Raspberry Pi 2 jako server a Raspberry Pi Zero W jako samotná meteostanice. Server realizován jako Raspberry Pi 2 zpřístupňuje uživateli minimalistické webové rozhraní a slouží jako MQTT broker pro meteostanici. Také jsou zde ukládány všechny naměřené hodnoty do SQLite3 databáze.
@@ -98,92 +89,86 @@ Pro konverzi analogových senzorů je použit AD převodník MCP3008.
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\linewidth]{weather-station-scheme}
-    \caption{Schéma zapojenia hardware.}
+    \caption{Schéma zapojení hardware.}
 \end{figure}
 
 \subsection{Software}\label{subsec:sw}
-
-V tejto časti sú popísané naimplementované časti software a nástroje použité
-k činnosti meteostanice s autonómnym riadením.
-Na obrázku~\ref{fig:sw-scheme} je znázornené prepojenie jednotlivých modulov
-a spôsob ich komunikácie.
+Na obrázku~\ref{fig:sw-scheme} je znázorněné propojení jednotlivých modulů a způsob jejich komunikace.
 
 \begin{figure}[htb]
-    \label{fig:sw-scheme}
     \centering
-    \includegraphics[width=0.5\linewidth]{weather-station-scheme}
-    \caption{Schéma prepojenia softwareových modulov.}
+    \includegraphics[width=0.75\linewidth]{sw-scheme}
+    \caption{Schéma propojení software modulů.}
+    \label{fig:sw-scheme}
 \end{figure}
 
-Interakciu s užívateľom sprostredkúva webová aplikácia, ktorá sa skladá z grafického
-užívateľského rozhrania (GUI) zobrazovaného vo webovom prehliadači a serverovej časti.
+Interakci s uživatelem zprostředkovává webová aplikace, která se skládá z grafického uživatelského rozhraní zobrazovaného ve webovém prohlížeči a serverové části.
 
-Webové grafické užívateľské rozhranie je naimplementované vo frameworku Angular verzie 4.
-\todo[inline]{krátky popis angularu, kniznic pouzitych na zobrazenie grafov}
-GUI zobrazuje dáta prenášané zo serveru prostredníctvom REST API.
+Webové grafické uživatelské rozhraní je naimplementované ve frameworku Angular. Webová aplikace dále využívá knihovnu Dygraphs pro zobrazování čárových grafů pro jednotlivé naměřené metriky. GUI získává data pomocí REST API ze serverové části aplikace. Při prvním načtení se získají historická data za posledních 24 hodin a dále si GUI získává nová data každých 5 sekund.
 
-Serverová časť webovej aplikácie (backend) prijíma dáta zo senzorov a ukladá ich do databázy.
-Na základe dát zo senzorov a nastavených pravidiel určuje činnosť aktuátorov, a komunikuje s aktuátormi.
-Backend je naimplementovaný v jazyku Python.
-K implementácii REST API je použitý framework Flask.
-\todo[inline]{kratky popis flasku}
+K implementaci REST API je použit framework Flask.
+Serverová část webové aplikace (backend) přijímá data ze senzorů a ukládá je do databáze.
+Na základě dat ze senzorů a nastavených pravidel určuje činnost a řídí aktuátorů.
+
 REST API umožňuje:
 \begin{itemize}
-    \item získať poslednú vzorku dát zo senzorov vrátane časovej známky spolu s trendom vypočítaným
-        pre každú meranú veličinu
-    \item získať informácie o aktuálnom stave aktuátorov a pravidlách, ktorými sú riadené
+    \item získat poslední vzorek dat ze senzorů včetně časové známky spolu s trendem vypočítaným pro každou měřenou metriku
+    \item získat informace o aktuálním stavu aktuátorů a pravidlech, kterými jsou řízeny
+    \item nastavit nové prahové hodnoty jednotlivým aktuátorům
 \end{itemize}
 
-Výpočet trendov prebieha na základe lineárnej aproximácie z určitého počtu posledných vzoriek danej veličiny.
-Pre každú veličinu je tak určená funkcia v tvare:
+Výpočet trendů probíhá na základě lineární aproximace z určitého počtu posledních vzorků dané veličiny.
+Pro každou veličinu je tak určena funkce ve tvaru:
 \[
     y = a x + b
 \]
-Koeficient $a$ udáva ako prudko funkcia klesá alebo stúpa.
-Koeficient $b$ udáva posunutie funkcie po osi $x$.
-Toto posunutie nemá na zmenu veličiny vplyv a preto môže byť z ďalších výpočtov vypustené.
-Do vzťahu:
+Koeficient $a$ udává jako prudce funkce klesá nebo stoupá.
+Koeficient $b$ udává posunutí funkce po ose $x$.
+Toto posunutí nemá na změnu veličiny vliv a proto může být z dalších výpočtů vypuštěno.
+Do vztahu:
 \[
     y = a x
 \]
-je potom za $x$ dosadený počet vzoriek, z ktorých sa počíta trend.
-Hodnota $y$ udáva o koľko sa daná veličina za posledných $x$ vzoriek zmenila.
-Pre každú veličinu boli empiricky určené hodnoty prahov.
-Ak je absolútna hodnota zmeny veličiny väčšia ako prah,
-podľa znamienka zmeny veličiny je určený stúpajúci alebo klesajúci trend,
-inak je určený trend rovnomerného priebehu.
+je potom za $x$ dosazený počet vzorků, z kterých sa počítá trend.
+Hodnota $y$ udáva o kolik sa daná veličina za posledních $x$ vzorků změnila.
 
-Pre ukladanie dát je použitý databázový systém SQLite3, ktorého výhodou je jeho jednoduchosť
-a štandardná podpora v jazyku Python.
-Dátabázové dáta sú uložené v jedinom súbore.
-V databáze sa nachádzajú 3 tabuľky:
+Pro každou veličinu byly empirickým pozorováním určené hodnoty prahů.
+Pokud je absolutní hodnota změny veličiny větší než práh, tak podle znaménka změny veličiny je určen stoupající nebo klesající trend, jinak je určen trend rovnoměrného průběhu.
+
+V databázi SQLite3 sa nachází 3 tabulky:
 \begin{itemize}
-    \item \texttt{weather\_data} - obsahuje históriu dát zo senzorov
-    \item \texttt{actuators} - obsahuje informácie o stave aktuátorov
-    \item \texttt{thresholds} - obsahuje informácie o pravidlách riadiacich činnosť aktuátorov
+    \item \texttt{weather\_data} - data získaná ze senzorů
+    \item \texttt{actuators} - informace o stavu aktuátorů
+    \item \texttt{thresholds} - informace o pravidlech řídících činnost aktuátorů
 \end{itemize}
 
-Dáta zo senzorov získava, agreguje a následne odosiela backendu modul \texttt{sensors}.
-Pre testovacie účely bol pripravený aj modul \texttt{fake-sensors}, ktorý simuluje
-činnosť modulu \texttt{sensors} a odosiela umelé dáta v rovnakom formáte.
+Data ze senzorů získává, agreguje a následně odesílá backendu modul \texttt{sensors}.
+Pro testovací účely byl připraven i modul \texttt{fake-sensors}, který simuluje
+činnost modulu \texttt{sensors} a odesílá umělá data ve stejném formátu.
 
-Modul \texttt{fake-actuators} simuluje činnosť aktuátorov.
-Z backendu prijíma príkazy na zmenu stavu aktuátorov, ktoré simuluje.
-Po prevedení činnosti aktuátoru je odoslaná informácia o stave, v ktorom
-sa aktuátor nachádza backendu.
-Nasleduje zoznam simulovaných aktuátorov:
+Modul \texttt{fake-actuators} simuluje činnost aktuátorů.
+Z backendu přijímá příkazy na změnu stavu aktuátorů, které simuluje.
+Po provedení činnosti aktuátorů je odeslána informace o stavu, ve kterém
+se aktuátor nachází backendu.
+
+Následuje seznam simulovaných aktuátorů:
 \begin{itemize}
-    \item klimatizácia - riadená na základe údajov o teplote
-    \item kúrenie - riadené na základe údajov o teplote
-    \item žalúzie - riadené na základe údajov o intenzite svetla
-    \item zavlažovanie rastlín - riadené na základe údajov o vlhkosti pôdy
+    \item klimatizace - řízená na základě údajů o teplotě
+    \item topení - řízené na základě údajů o teplotě
+    \item žaluzie - řízené na základě údajů o intenzitě světla
+    \item zavlažování rostlin - řízené na základě údajů o vlhkosti půdy
 \end{itemize}
 
-Komunikácia medzi backendom, senzormi a aktuátormi prebieha cez protokol MQTT.
-\todo[inline]{kratky popis MQTT}
-Ako broker je použité Mosquitto.
+Komunikace mezi backendem, senzory a aktuátory probíhá skrz protokol MQTT. Jako broker byl zvolen nástroj Mosquitto.
+
+MQTT topic pro zprávy zasílané senzory má tvar \texttt{home/ws/sensor/<jméno senzoru>} a obsah dané zprávy ve formátu \texttt{<unix časové razítko>;<hodnota>}.
+
+MQTT topic pro zprávy zasílané aktuátory má tvar \texttt{home/ws/actuator/<jméno senzoru>} a obsah dané zprávy ve stejném formátu jako u senzorů.
+
+Aktuátory přijímají MQTT zprávy od backendu pro nastavení stavu s MQTT topic ve tvaru: \texttt{home/ws/actuator/<jméno senzoru>/state} a obsahem zprávy je pouze nově nastavovaná hodnota v podobě hodnoty 0 nebo 1.
 
 \section{Výsledky}\label{sec:res}
+
 
 \section{Závěr}\label{sec:sum}
 
