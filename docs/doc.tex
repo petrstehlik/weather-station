@@ -167,9 +167,23 @@ MQTT topic pro zprávy zasílané aktuátory má tvar \texttt{home/ws/actuator/<
 
 Aktuátory přijímají MQTT zprávy od backendu pro nastavení stavu s MQTT topic ve tvaru: \texttt{home/ws/actuator/<jméno senzoru>/state} a obsahem zprávy je pouze nově nastavovaná hodnota v podobě hodnoty 0 nebo 1.
 
-\section{Výsledky}\label{sec:res}
-
+\section{Demonstrace systému}\label{sec:res}
+Celý systém lze spustit v demonstračním režimu, v kterém je simulována činnost aktuátorů i senzorů. Prerekvizity pro spuštení demostrace systémů pomocí skriptu \texttt{run.sh} jsou:
+\begin{itemize}
+    \item Python 2.7
+    \item moduly pip a virtualenv
+    \item NodeJS 8.7 a npm 5.4
+    \item Angular CLI 1.4.1\footnote{Balik Angular CLI vyžaduje globalní instalaci příkazem npm i \texttt{@angular/cli@1.4.1 -g}}
+    \item spuštěný Mosquitto broker na výchozím portu 1883
+    \item dostupné a volné porty 4200 a 8080
+\end{itemize}
+Postup pro demonstraci systému je následující:
+\begin{enumerate}
+    \item spustit bash skript \texttt{run.sh}
+    \item otevřít webový prohlížeč na adrese \url{http://localhost:4200}
+\end{enumerate}
 
 \section{Závěr}\label{sec:sum}
+Webová aplikace pro vytvořený systém, která obsahuje data naměřená z reálných aktivních senzorů a simulovaných aktuátorů, je dostupná z adresy \url{https://ws.petrstehlik.cz}. Pro demonstrační účely byl vytvořen skript, který nainstaluje potřebné nástroje pro backend i frontend a spustí frontend, backend a moduly pro simulaci činnosti aktuátorů a senzorů.
 
 \end{document}
