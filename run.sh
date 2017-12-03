@@ -1,14 +1,18 @@
 #!/bin/bash
 FRONTEND=0
 BACKEND=0
+SENSORS=0
+ACTUATORS=0
 
 #function to display commands
 exe() { echo "\$ ${@/eval/}" ; "$@" ; }
 
 control_c() {
-    if [[ $FRONTEND -gt 0 && $BACKEND -gt 0 ]]; then
+    if [[ $FRONTEND -gt 0 && $BACKEND -gt 0 && $SENSORS -gt 0 && $ACTUATORS -gt 0 ]]; then
         exe kill $BACKEND
         exe kill $FRONTEND
+        exe kill $SENSORS
+        exe kill $ACTUATORS
     else
         echo "Nothing to kill"
     fi
@@ -31,11 +35,17 @@ exe npm install
 
 ng serve --proxy proxy.json &
 FRONTEND=$!
-exe cd ../backend
-python __main__.py &
-BACKEND=$!
+exe cd ../
 
-echo "Everything is running, go to http://localhost:4200"
+python fake-sensors &
+SENSORS=$!
+sleep 2
+python fake-actuators &
+ACTUATORS=$!
+sleep 2
+exe rm db.sq3
+python backend &
+BACKEND=$!
 
 wait $BACKEND
 wait $FRONTEND
