@@ -64,7 +64,6 @@ K implementaci serverové části webové aplikace je možné použít framework
 Mosquitto\footnote{\url{https://mosquitto.org/}} je volně dostupný broker pro MQTT protokol používaný v prostředí systémů IoT podporující různé platformy.
 
 \section{Architektura a implementace}
-%TODO do cestiny
 Meteostanice obsahuje reálné senzory, z nichž jsou data přenášena na server. Server data ukládá do databáze, řídí činnost aktuátorů podle pravidel, které jsou také uloženy v databázi a obsluhuje webovou aplikaci, která poskytuje grafické uživatelské rozhraní k celému systému.
 
 Činnost aktuátorů je simulována a pro účely testování byl také sestrojen modul pro simulování činnosti senzorů.
@@ -115,6 +114,7 @@ REST API umožňuje:
     \item získat poslední vzorek dat ze senzorů včetně časové známky spolu s trendem vypočítaným pro každou měřenou metriku
     \item získat informace o aktuálním stavu aktuátorů a pravidlech, kterými jsou řízeny
     \item nastavit nové prahové hodnoty jednotlivým aktuátorům
+    \item získat předpověď počasí na 5 dní pomocí API OpenWeatherMap
 \end{itemize}
 
 Výpočet trendů probíhá na základě lineární aproximace z určitého počtu posledních vzorků dané veličiny.
@@ -182,6 +182,13 @@ Postup pro demonstraci systému je následující:
     \item spustit bash skript \texttt{run.sh}
     \item otevřít webový prohlížeč na adrese \url{http://localhost:4200}
 \end{enumerate}
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[width=0.75\linewidth]{web}
+    \caption{Webové rozhraní v demonstračním režimu.}
+    \label{fig:sw-scheme}
+\end{figure}
 
 \section{Závěr}\label{sec:sum}
 Webová aplikace pro vytvořený systém, která obsahuje data naměřená z reálných aktivních senzorů a simulovaných aktuátorů, je dostupná z adresy \url{https://ws.petrstehlik.cz}. Pro demonstrační účely byl vytvořen skript, který nainstaluje potřebné nástroje pro backend i frontend a spustí frontend, backend a moduly pro simulaci činnosti aktuátorů a senzorů.
