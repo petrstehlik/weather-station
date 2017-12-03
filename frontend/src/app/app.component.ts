@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
             'metric' : 'moisture'
         }]
 
-    ws;
+    actuators;
     data : Object = {
         temperature : undefined,
         humidity : undefined,
@@ -61,20 +61,26 @@ export class AppComponent implements OnInit {
             this.data = data;
             this.parseData();
             this.interval = setInterval(() => {
+                this.http.get('/api/actuators').subscribe(data => {
+                    this.actuators = data;
+                });
                 this.http.get<Latest>('/api/latest').subscribe(data => {
                     let t = this.data['temperature']["data"]
 
+                    for (let item of this.metrics) {
+                            this.data[item]['trend'] = data[item][2];
+                        }
+
                     // Don't do anything if we have still old data
-                    if (t[t.length - 1][0].getTime() == new Date(data['temperature'][0]).getTime())
-                        return
+                    if (t[t.length - 1][0].getTime() == new Date(data['temperature'][0]).getTime()) {
+                        return;
+                    }
 
                     this.tempLoad = true;
 
                     for (let item of this.metrics) {
                         let newdata = this.data;
                         this.data[item]['data'].push([new Date(data[item][0]), data[item][1]]);
-                        this.data[item]['trend'] = data[item][2];
-                        console.log(data[item])
                         this.ref.markForCheck();
                         this.ref.detectChanges();
                     }

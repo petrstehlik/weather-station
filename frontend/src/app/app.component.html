@@ -51,5 +51,14 @@
             </div>
         </div>
     </div>
+
+    <br />
+
+</div>
+<div class="cards">
+    <div class="card" *ngFor="let act of actuators">
+        <h3>{{ act.name }} <span class="status">&bull;</span></h3>
+        {{ act | json }}
+    </div>
 </div>
 
