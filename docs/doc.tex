@@ -1,7 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[left=2cm,text={17cm,25cm},top=2.5cm]{geometry}
 \usepackage[T1]{fontenc}
-\usepackage[english]{babel}
+\usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{url}
 \usepackage{graphicx}
@@ -77,11 +77,12 @@ Server dáta ukladá do databázy, riadi činnosť aktuátorov podľa pravidiel,
 a obsluhuje webovú aplikáciu, ktorá poskytuje grafické užívateľské rozhranie k celému systému.
 Činnosť aktuátorov je simulovaná.
 Pre účely testovania bol taktiež zostrojený modul pre simulovanie činnosti senzorov.
-V časti~\ref{subsec:hw} je popísaný hardvér a spôsob jeho zapojenia.
-V nasledujúcej časti~\ref{subsec:sw} je popísaná implementácia softvérových modulov systému.
+V časti~\ref{subsec:hw} je popísaný hardware a spôsob jeho zapojenia.
+V nasledujúcej časti~\ref{subsec:sw} je popísaná implementácia softwareových modulov systému.
 
 \subsection{Hardware}\label{subsec:hw}
 Základem pro hardware byly zvoleny Raspberry Pi 2 jako server a Raspberry Pi Zero W jako samotná meteostanice. Server realizován jako Raspberry Pi 2 zpřístupňuje uživateli minimalistické webové rozhraní a slouží jako MQTT broker pro meteostanici. Také jsou zde ukládány všechny naměřené hodnoty do SQLite3 databáze.
+Na obrázku~\ref{fig:hw-scheme} je znázornená schéma zapojenia senzorov a Raspberry Pi.
 
 K Raspberry Pi Zero W jsou připojeny následující senzory:
 
@@ -94,26 +95,96 @@ K Raspberry Pi Zero W jsou připojeny následující senzory:
 
 Pro konverzi analogových senzorů je použit AD převodník MCP3008.
 
-
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\linewidth]{weather-station-scheme}
-    \caption{This is a figure.}
+    \caption{Schéma zapojenia hardware.}
 \end{figure}
 
-\todo[inline]{schéma HW zapojení (rpis)}
-\todo[inline]{aktuátory}
+\subsection{Software}\label{subsec:sw}
 
-\subsection{SW}\label{subsec:sw}
-aktuátory
-mqtt (co to je, jak se pouziva) + mosquitto + topic schemes
-zapojení dashboardu (fe, be, db, rest api)
-popis technologii (angular, flask, sqlite)
+V tejto časti sú popísané naimplementované časti software a nástroje použité
+k činnosti meteostanice s autonómnym riadením.
+Na obrázku~\ref{fig:sw-scheme} je znázornené prepojenie jednotlivých modulov
+a spôsob ich komunikácie.
 
-\section{Výsledky}
-\label{sec:res}
+\begin{figure}[htb]
+    \label{fig:sw-scheme}
+    \centering
+    \includegraphics[width=0.5\linewidth]{weather-station-scheme}
+    \caption{Schéma prepojenia softwareových modulov.}
+\end{figure}
 
-\section{Závěr}
-\label{sec:sum}
+Interakciu s užívateľom sprostredkúva webová aplikácia, ktorá sa skladá z grafického
+užívateľského rozhrania (GUI) zobrazovaného vo webovom prehliadači a serverovej časti.
+
+Webové grafické užívateľské rozhranie je naimplementované vo frameworku Angular verzie 4.
+\todo[inline]{krátky popis angularu, kniznic pouzitych na zobrazenie grafov}
+GUI zobrazuje dáta prenášané zo serveru prostredníctvom REST API.
+
+Serverová časť webovej aplikácie (backend) prijíma dáta zo senzorov a ukladá ich do databázy.
+Na základe dát zo senzorov a nastavených pravidiel určuje činnosť aktuátorov, a komunikuje s aktuátormi.
+Backend je naimplementovaný v jazyku Python.
+K implementácii REST API je použitý framework Flask.
+\todo[inline]{kratky popis flasku}
+REST API umožňuje:
+\begin{itemize}
+    \item získať poslednú vzorku dát zo senzorov vrátane časovej známky spolu s trendom vypočítaným
+        pre každú meranú veličinu
+    \item získať informácie o aktuálnom stave aktuátorov a pravidlách, ktorými sú riadené
+\end{itemize}
+
+Výpočet trendov prebieha na základe lineárnej aproximácie z určitého počtu posledných vzoriek danej veličiny.
+Pre každú veličinu je tak určená funkcia v tvare:
+\[
+    y = a x + b
+\]
+Koeficient $a$ udáva ako prudko funkcia klesá alebo stúpa.
+Koeficient $b$ udáva posunutie funkcie po osi $x$.
+Toto posunutie nemá na zmenu veličiny vplyv a preto môže byť z ďalších výpočtov vypustené.
+Do vzťahu:
+\[
+    y = a x
+\]
+je potom za $x$ dosadený počet vzoriek, z ktorých sa počíta trend.
+Hodnota $y$ udáva o koľko sa daná veličina za posledných $x$ vzoriek zmenila.
+Pre každú veličinu boli empiricky určené hodnoty prahov.
+Ak je absolútna hodnota zmeny veličiny väčšia ako prah,
+podľa znamienka zmeny veličiny je určený stúpajúci alebo klesajúci trend,
+inak je určený trend rovnomerného priebehu.
+
+Pre ukladanie dát je použitý databázový systém SQLite3, ktorého výhodou je jeho jednoduchosť
+a štandardná podpora v jazyku Python.
+Dátabázové dáta sú uložené v jedinom súbore.
+V databáze sa nachádzajú 3 tabuľky:
+\begin{itemize}
+    \item \texttt{weather\_data} - obsahuje históriu dát zo senzorov
+    \item \texttt{actuators} - obsahuje informácie o stave aktuátorov
+    \item \texttt{thresholds} - obsahuje informácie o pravidlách riadiacich činnosť aktuátorov
+\end{itemize}
+
+Dáta zo senzorov získava, agreguje a následne odosiela backendu modul \texttt{sensors}.
+Pre testovacie účely bol pripravený aj modul \texttt{fake-sensors}, ktorý simuluje
+činnosť modulu \texttt{sensors} a odosiela umelé dáta v rovnakom formáte.
+
+Modul \texttt{fake-actuators} simuluje činnosť aktuátorov.
+Z backendu prijíma príkazy na zmenu stavu aktuátorov, ktoré simuluje.
+Po prevedení činnosti aktuátoru je odoslaná informácia o stave, v ktorom
+sa aktuátor nachádza backendu.
+Nasleduje zoznam simulovaných aktuátorov:
+\begin{itemize}
+    \item klimatizácia - riadená na základe údajov o teplote
+    \item kúrenie - riadené na základe údajov o teplote
+    \item žalúzie - riadené na základe údajov o intenzite svetla
+    \item zavlažovanie rastlín - riadené na základe údajov o vlhkosti pôdy
+\end{itemize}
+
+Komunikácia medzi backendom, senzormi a aktuátormi prebieha cez protokol MQTT.
+\todo[inline]{kratky popis MQTT}
+Ako broker je použité Mosquitto.
+
+\section{Výsledky}\label{sec:res}
+
+\section{Závěr}\label{sec:sum}
 
 \end{document}
