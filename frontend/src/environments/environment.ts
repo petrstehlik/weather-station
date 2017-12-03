@@ -13,4 +13,5 @@ export const environment = {
             offsetY : 5        // Y-axis offset for label position (px)
         }
     },
+    actuators : true
 };

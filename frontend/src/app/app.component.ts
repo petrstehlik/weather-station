@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Latest } from './models/Latest';
+import { environment as env } from 'environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ export class AppComponent implements OnInit {
     interval = undefined;
     weather = undefined;
     forecast = undefined;
+    env = env;
 
     metrics = ['temperature', 'humidity', 'pressure', 'light', 'moisture'];
     categories = [
@@ -60,16 +62,12 @@ export class AppComponent implements OnInit {
         this.http.get('/api/init').subscribe(data => {
             this.data = data;
             this.parseData();
+            this.getTrends();
+            this.getActuators();
             this.interval = setInterval(() => {
-                this.http.get('/api/actuators').subscribe(data => {
-                    this.actuators = data;
-                });
                 this.http.get<Latest>('/api/latest').subscribe(data => {
-                    let t = this.data['temperature']["data"]
-
-                    for (let item of this.metrics) {
-                            this.data[item]['trend'] = data[item][2];
-                        }
+                     this.getTrends(data);
+                     let t = this.data['temperature']["data"]
 
                     // Don't do anything if we have still old data
                     if (t[t.length - 1][0].getTime() == new Date(data['temperature'][0]).getTime()) {
@@ -91,6 +89,25 @@ export class AppComponent implements OnInit {
         });
     }
 
+    toggleActuator(act) {
+        console.log("should change", act);
+    }
+
+    updateActuator(act) {
+        console.log(act);
+        this.http.post('/api/actuators/' + act.id, act.thresholds).subscribe(data => {
+            console.log(data)
+            act = data;
+            act.active = true;
+
+            for(let item of this.actuators) {
+                if (item.id == act.id) {
+                    item = act;
+                }
+            }
+        })
+    }
+
     private parseData() {
         for (let metric of this.metrics) {
             for (let item of this.data[metric] ) {
@@ -105,6 +122,26 @@ export class AppComponent implements OnInit {
         }
 
         this.tempLoad = false;
+    }
+
+    private getActuators() {
+        this.http.get('/api/actuators').subscribe(data => {
+            this.actuators = data;
+        });
+    }
+
+    private getTrends(data = undefined) {
+        if (data === undefined) {
+            this.http.get<Latest>('/api/latest').subscribe(data => {
+                for (let item of this.metrics) {
+                    this.data[item]['trend'] = data[item][2];
+                }
+            });
+        } else {
+            for (let item of this.metrics) {
+                this.data[item]['trend'] = data[item][2];
+            }
+        }
     }
 
     private getWeather() {

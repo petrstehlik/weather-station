@@ -26,6 +26,7 @@ body {
     border-radius: 3px;
     margin: 0.25rem 0.25rem;
     background: #FFF;
+    position: relative;
     -webkit-box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
     box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
 
@@ -36,6 +37,20 @@ body {
 
         span.trend {
             display: inline-block;
+        }
+
+        span.status {
+            vertical-align: middle;
+            font-size: 2.5em;
+            line-height: 0;
+
+            &.on {
+                color: #39FF39;
+            }
+
+            &.off {
+                color: #E51C23;
+            }
         }
     }
 
@@ -53,6 +68,17 @@ body {
             font-size: smaller;
             vertical-align: middle;
         }
+    }
+
+    small.ts-actuator {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        color: #CCC;
+    }
+
+    .threshold {
+        padding: 0 1em 1em 1em;
     }
 }
 
@@ -88,6 +114,25 @@ body {
                 display: inline-block;
             }
         }
+    }
+}
+
+.actuator {
+    input {
+        border-radius: 2px;
+        border: 1px solid #CCC;
+        font-size: 1.25em;
+        width: 3em;
+        padding:0.25em;
+    }
+
+    button {
+        font-size: 0.9em;
+        border: 1px solid #CCC;
+        background: rgba(50, 120, 200, 0.25);
+        border-radius: 3px;
+        padding: 0.5em;
+        margin: 0 0 10px 10px;
     }
 }
 

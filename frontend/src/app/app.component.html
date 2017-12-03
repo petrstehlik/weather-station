@@ -55,10 +55,22 @@
     <br />
 
 </div>
-<div class="cards">
-    <div class="card" *ngFor="let act of actuators">
-        <h3>{{ act.name }} <span class="status">&bull;</span></h3>
-        {{ act | json }}
+<div class="cards" *ngIf="env.actuators">
+    <div class="card actuator" *ngFor="let act of actuators">
+        <h3>{{ act.name }} <span class="status" [ngClass]="{
+        'on' : act?.active,
+        'off' : !act?.active }">
+                &bull;
+            </span>
+        </h3>
+
+        <div class="threshold" *ngFor="let threshold of act?.thresholds">
+            <em>{{ threshold.name}}</em> : <input type="number" name="threshold" [(ngModel)]="threshold.value">
+        </div>
+
+        <button (click)="updateActuator(act)">Update</button>
+
+        <small class="ts-actuator">{{ act.timestamp | date : 'HH:mm:ss dd/M' }}</small>
     </div>
 </div>
 
