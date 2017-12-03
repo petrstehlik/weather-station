@@ -24,11 +24,11 @@ APPID = "c11eabf697cfe8167bb53d3c1a7cbd20"
 TREND_VAL_COUNT = 120
 TREND_ANGLE = 45
 TREND_THRESHOLD = dict()
-TREND_THRESHOLD["temperature"] = 0.2
-TREND_THRESHOLD["humidity"]    = 2
-TREND_THRESHOLD["pressure"]    = 0.2
+TREND_THRESHOLD["temperature"] = 0.4
+TREND_THRESHOLD["humidity"]    = 1.0
+TREND_THRESHOLD["pressure"]    = 1.0
 TREND_THRESHOLD["light"]       = 2
-TREND_THRESHOLD["moisture"]    = 0.2
+TREND_THRESHOLD["moisture"]    = 0.5
 
 @app.route('/init')
 def init():
