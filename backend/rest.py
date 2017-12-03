@@ -171,7 +171,7 @@ def actuators():
 
     return json.dumps(result)
 
-@app.route("/actuator/<int:actuator_id>", methods=['POST'])
+@app.route("/actuators/<int:actuator_id>", methods=['POST'])
 def actuator(actuator_id):
     data = request.get_json()
     c = conn.cursor()
