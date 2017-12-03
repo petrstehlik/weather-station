@@ -66,8 +66,9 @@ export class AppComponent implements OnInit {
             this.getActuators();
             this.interval = setInterval(() => {
                 this.http.get<Latest>('/api/latest').subscribe(data => {
-                     this.getTrends(data);
-                     let t = this.data['temperature']["data"]
+                    this.getTrends(data);
+                    this.getActuators();
+                    let t = this.data['temperature']["data"]
 
                     // Don't do anything if we have still old data
                     if (t[t.length - 1][0].getTime() == new Date(data['temperature'][0]).getTime()) {
