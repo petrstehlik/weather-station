@@ -50,10 +50,10 @@ def store_record(timestamp, data):
             if data_vals[thr["name"]] < thr["value"]:
                 new_state = 0
                 break
-        log.info("Actuator %s state: %s new_state: %s" % (row["name"], row["state"], new_state))
+        log.info("Actuator %s state: %s new_state: %s" % (row["type"], row["state"], new_state))
         if new_state != row["state"]:
-            log.info("Sending message '%s': %s " % (MQTT_ACT_BASE + row["name"] + "/state", new_state))
-            publish.single(MQTT_ACT_BASE + row["name"] + "/state", str(new_state), hostname=HOST)
+            log.info("Sending message '%s': %s " % (MQTT_ACT_BASE + row["type"] + "/state", new_state))
+            publish.single(MQTT_ACT_BASE + row["type"] + "/state", str(new_state), hostname=HOST)
 
 
     statement = "INSERT INTO {} (time, temperature, pressure, humidity, light, moisture) VALUES ("\
@@ -88,7 +88,7 @@ def actuator_on_message(client, userdata, message):
     log.info("Actuator: %s, Timestamp: %s, State: %s" % (actuator, timestamp, state))
 
     c = conn.cursor()
-    c.execute("UPDATE actuators SET timestamp = ?, state = ? WHERE name == ?", (timestamp, state, actuator))
+    c.execute("UPDATE actuators SET timestamp = ?, state = ? WHERE type == ?", (timestamp, state, actuator))
     try:
         conn.commit()
     except sqlite3.OperationalError as e:
@@ -111,7 +111,7 @@ if __name__ == "__main__":
     c.execute("CREATE TABLE IF NOT EXISTS actuators ("\
             "id INTEGER PRIMARY KEY, "\
             "name TEXT UNIQUE NOT NULL, "\
-            "type TEXT NOT NULL, "\
+            "type TEXT UNIQUE NOT NULL, "\
             "timestamp INTEGER NOT NULL, "\
             "state INTEGER NOT NULL);")
     c.execute("CREATE TABLE IF NOT EXISTS thresholds ("\

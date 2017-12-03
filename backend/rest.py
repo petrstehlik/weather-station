@@ -151,7 +151,7 @@ def actuators():
             rec["active"] = False
         else:
             rec["active"] = True
-        if rec["name"] == "heating" or rec["name"] == "plants_watering":
+        if rec["type"] == "heating" or rec["type"] == "plants_watering":
             """
             For heating and plants_watering, the state from database is opposite to its activity.
             If the state is 0 (the value is lower than threshold), heating and plant_watering actuators
@@ -200,7 +200,7 @@ def actuator(actuator_id):
         rec["active"] = False
     else:
         rec["active"] = True
-    if rec["name"] == "heating" or rec["name"] == "plants_watering":
+    if rec["type"] == "heating" or rec["type"] == "plants_watering":
         """
         For heating and plants_watering, the state from database is opposite to its activity.
         If the state is 0 (the value is lower than threshold), heating and plant_watering actuators
