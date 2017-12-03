@@ -21,7 +21,7 @@ conn.row_factory = sqlite3.Row
 
 APPID = "c11eabf697cfe8167bb53d3c1a7cbd20"
 
-TREND_VAL_COUNT = 120
+TREND_VAL_COUNT = 5
 TREND_ANGLE = 45
 TREND_THRESHOLD = dict()
 TREND_THRESHOLD["temperature"] = 0.4
