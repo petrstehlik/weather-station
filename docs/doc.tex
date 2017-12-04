@@ -37,7 +37,7 @@ Meteostanice měří teplotu, vlhkost a tlak vzduchu; vlhkost v květináči a s
 GUI zobrazuje aktuální a historické naměřené hodnoty jednotlivých senzorů, trendy a naposledy vykonané akce aktuátorů společně s krátkodobou předpovědí počasí získanou z volně dostupných zdrojů.
 
 \section{Nástroje pro monitoring a řízení}
-Na trhu je velké množství dostupných nástrojů pro monitoring a řízení a to i na poli chytrých domácností. Je zde mnoho komerčních a uzavřených systémů pro automatizaci domácnosti. V současnosti nejznámější a pravděpodobně i nejrozšířenější je Apple Home\footnote{\url{https://www.apple.com/lae/ios/home/}}, který využívá protokolu Homekit také od společnosti Apple. Na trhu existuje pro Apple Home velké množství produktů a neustále se jejich počet zvyšuje. Existuje ale i mnoho open-source nástrojů pro řízení domácnosti. Jejich nejrozšířenější zastupitele jsou zde v krátkosti popsány.
+Na trhu je velké množství dostupných nástrojů pro monitoring a řízení a to i na poli chytrých domácností. Je zde mnoho komerčních a uzavřených systémů pro automatizaci domácnosti. V současnosti nejznámější a pravděpodobně i nejrozšířenější je Apple Home\footnote{\url{https://www.apple.com/lae/ios/home/}}, který využívá protokolu Homekit také od společnosti Apple. Na trhu existuje pro Apple Home velké množství produktů a neustále se jejich počet zvyšuje. Existuje ale i mnoho open-source nástrojů pro řízení domácnosti. Jejich nejrozšířenější zastupitelé jsou zde v krátkosti popsány.
 
 \subsection{Grafana}
 Grafana (\url{https://grafana.com/}) je vizualizační a analytický nástroj pro data zachycená v čase. Grafana samotná není primárně určena pro monitoring a řízení chytrých domácností, ale je natolik upravitelná, že existují konfigurace, které toto užití zpřístupňují. Je dostupná s mnoha rozšířeními a zdroji dat. Uživatel si vytvoří dashboard, který si následně nakonfiguruje a seskládá z dostupných modulů. Tyto moduly mimo dalších funkcionalit umožňují zobrazit čárový graf, jednotlivé hodnoty, trendy hodnot a s pomocí modulů i různé přepínače.
@@ -55,13 +55,13 @@ Home Assistant (\url{https://home-assistant.io/}) je primárně navrhován pro u
 BeeeOn (\url{https://beeeon.org/}) je systém pro domácí automatizaci vyvíjený na FIT VUT v Brně. Tento systém je primárně vyvíjen jako bezpečná domácí brána pro různé IoT zařízení. Oproti předchozím systémům je nutno pro plnou funkcionalitu systému vlastnit domácí bránu, kterou lze propojit s několika výrobci a jejich zařízeními. BeeeOn disponuje Android mobilní aplikací pro ovládání domácnosti a prototypem webového rozhraní.
 
 \subsection{Vlastní řešení}
-Kromě uvedených kompletních řešení pro monitoring a analýzu řídících systémů lze vytvořit vlastní řešení z dostupných open-source knihoven, frameworků a nástrojů. Toto řešení jsme ve finále zvolili vzhledem k náročnosti instalace a konfigurace ostatních systémů. Pro naše řešení jsme zvolili kombinaci Angular pro klientskou část webové aplikace a Flask (Python) s SQLite3 pro backend. Pro distribuci zpráv od senzorů k serveru a mezi aktuátory a serverem MQTT broker Mosquitto.
+Kromě uvedených kompletních řešení pro monitoring a analýzu řídících systémů lze vytvořit vlastní řešení z dostupných open-source knihoven, frameworků a nástrojů. Toto řešení jsme ve finále zvolili vzhledem k náročnosti instalace a konfigurace ostatních systémů. Pro naše řešení jsme zvolili následující knihovny.
 
-Rozšířeným frameworkem pro tvorbu klientské části webových aplikací je Angular\footnote{\url{https://angular.io/}}. Angular umožňuje snadnou integraci různých knihoven pro zobrazování grafů a tvorbu interaktivních single-page aplikací (SPA).
+Angular\footnote{\url{https://angular.io/}} pro klientskou část webové aplikace umožňující snadnou integraci různých knihoven pro zobrazování grafů a tvorbu interaktivních single-page aplikací (SPA).
 
-K implementaci serverové části webové aplikace je možné použít framework Flask\footnote{\url{http://flask.pocoo.org/}} napsaný v jazyce Python. Flask umožňuje rychlou a snadnou tvorbu REST API na propojení serverové a klientské části webové aplikace. Výhodou použití jazyku Python pro tvorbu serverové části aplikace je, že obsahuje moduly pro obsluhu databázového systému a zprotředkování síťové komunikace s dalšími prvky celého řídícího systému.
+Flask\footnote{\url{http://flask.pocoo.org/}} (Python) s SQLite3 pro backend, pomocí Flask lze rychle a snadno vytvořit REST API na propojení serverové a klientské části webové aplikace. Výhodou použití jazyku Python pro tvorbu serverové části aplikace je, že obsahuje moduly pro obsluhu databázového systému a zprotředkování síťové komunikace s dalšími prvky celého řídícího systému.
 
-Mosquitto\footnote{\url{https://mosquitto.org/}} je volně dostupný broker pro MQTT protokol používaný v prostředí systémů IoT podporující různé platformy.
+Pro distribuci zpráv od senzorů k serveru a mezi aktuátory a serverem MQTT broker Mosquitto\footnote{\url{https://mosquitto.org/}}, což je volně dostupný broker pro MQTT protokol používaný v prostředí systémů IoT podporující různé platformy.
 
 \section{Architektura a implementace}
 Meteostanice obsahuje reálné senzory, z nichž jsou data přenášena na server. Server data ukládá do databáze, řídí činnost aktuátorů podle pravidel, které jsou také uloženy v databázi a obsluhuje webovou aplikaci, která poskytuje grafické uživatelské rozhraní k celému systému.
@@ -72,9 +72,9 @@ V části~\ref{subsec:hw} je popsán hardware a způsob jeho zapojení. V násle
 
 \subsection{Hardware}\label{subsec:hw}
 Základem pro hardware byly zvoleny Raspberry Pi 2 jako server a Raspberry Pi Zero W jako samotná meteostanice. Server realizován jako Raspberry Pi 2 zpřístupňuje uživateli minimalistické webové rozhraní a slouží jako MQTT broker pro meteostanici. Také jsou zde ukládány všechny naměřené hodnoty do SQLite3 databáze.
-Na obrázku~\ref{fig:hw-scheme} je znázornená schéma zapojenia senzorov a Raspberry Pi.
+Na obrázku~\ref{fig:hw-scheme} je znázorněné schéma zapojení senzorů, Raspberry Pi Zero W a Raspberry Pi 2.
 
-K Raspberry Pi Zero W jsou připojeny následující senzory:
+K Raspberry Pi Zero W jsou připojeny následující senzory, které posílají hodnoty každých 30 sekund:
 
 \begin{itemize}
     \item DHT11 - digitální senzor pro měření teploty a vlhkosti vzduchu
@@ -82,13 +82,13 @@ K Raspberry Pi Zero W jsou připojeny následující senzory:
     \item TEMT6000 - analogový senzor pro měření intenzity okolního světla
     \item YL-69 společně s YL-38 - analogový senzor pro měření vlhkosti půdy
 \end{itemize}
-
 Pro konverzi analogových senzorů je použit AD převodník MCP3008.
 
 \begin{figure}[htb]
     \centering
     \includegraphics[width=0.5\linewidth]{weather-station-scheme}
     \caption{Schéma zapojení hardware.}
+    \label{fig:hw-scheme}
 \end{figure}
 
 \subsection{Software}\label{subsec:sw}
@@ -187,7 +187,7 @@ Postup pro demonstraci systému je následující:
     \centering
     \includegraphics[width=0.75\linewidth]{web}
     \caption{Webové rozhraní v demonstračním režimu.}
-    \label{fig:sw-scheme}
+    \label{fig:web}
 \end{figure}
 
 \section{Závěr}\label{sec:sum}
