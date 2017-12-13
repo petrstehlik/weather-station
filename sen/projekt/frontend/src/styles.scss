@@ -1,0 +1,138 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: 'Helvetica', 'Arial', 'sans-serif';
+    color: #232323;
+    font-size: 16px;
+    background: rgba(50, 120, 200, 0.1);
+}
+
+.ts {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.75rem;
+    color: #CCC;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    border: 1px solid rgba(0,0,0,0.25);
+    flex: 1 1 calc(20% - 1rem - 20px);
+    justify-content: space-between;
+    border-radius: 3px;
+    margin: 0.25rem 0.25rem;
+    background: #FFF;
+    position: relative;
+    -webkit-box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
+    box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.1);
+
+    h3 {
+        width: 100%;
+        text-align: center;
+        font-size: 1.2rem;
+
+        span.trend {
+            display: inline-block;
+        }
+
+        span.status {
+            vertical-align: middle;
+            font-size: 2.5em;
+            line-height: 0;
+
+            &.on {
+                color: #39FF39;
+            }
+
+            &.off {
+                color: #E51C23;
+            }
+        }
+    }
+
+    .big-num {
+        font-size: 3rem;
+        text-align: center;
+
+        small {
+            font-size: 1.5rem;
+            color: #AAA;
+            vertical-align: middle;
+        }
+
+        i {
+            font-size: smaller;
+            vertical-align: middle;
+        }
+    }
+
+    small.ts-actuator {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        color: #CCC;
+    }
+
+    .threshold {
+        padding: 0 1em 1em 1em;
+    }
+}
+
+.weather {
+    .forecast {
+        display: flex;
+        .forecast-item {
+            flex: 1 1 20%;
+            text-align: center;
+
+            h2 {
+                font-size: 3rem;
+                padding: 0;
+                margin: 0.25rem 0 0 0;
+            }
+
+            h4 {
+                margin: 0;
+                font-size: 1.5rem;
+            }
+
+            small {
+                font-size: 0.65rem;
+                color: #AAA;
+            }
+
+            .minmax {
+                background: #EEE;
+                border-radius: 2px;
+                padding: 2px 3px;
+                margin: 0 0 1rem 0;
+                font-size: 0.75rem;
+                display: inline-block;
+            }
+        }
+    }
+}
+
+.actuator {
+    input {
+        border-radius: 2px;
+        border: 1px solid #CCC;
+        font-size: 1.25em;
+        width: 3em;
+        padding:0.25em;
+    }
+
+    button {
+        font-size: 0.9em;
+        border: 1px solid #CCC;
+        background: rgba(50, 120, 200, 0.25);
+        border-radius: 3px;
+        padding: 0.5em;
+        margin: 0 0 10px 10px;
+    }
+}
+
